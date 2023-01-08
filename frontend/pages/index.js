@@ -1,9 +1,7 @@
 export default function Home() {
   return (
     <>
-      <p className="text-black">
-        Hello
-      </p>
+      <p className="text-black">Hello</p>
     </>
-  )
+  );
 }
