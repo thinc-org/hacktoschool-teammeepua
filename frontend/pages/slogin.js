@@ -15,7 +15,7 @@ export default function TeacherLogin() {
             width={16}
             height={16}
           />
-          Student Login
+          Course Instructor Login
         </Link>
 
         <div className="w-2/5 h-1/2 text-stone-500 rounded-lg border border-white bg-white shadow-xl px-20 py-11">
