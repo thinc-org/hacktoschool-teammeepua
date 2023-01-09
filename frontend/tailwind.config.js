@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      montserrat: ["Montserrat", "san-serif"]
-    }
+      montserrat: ["Montserrat"],
+    },
   },
   plugins: [],
-}
+};
