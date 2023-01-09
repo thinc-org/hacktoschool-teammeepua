@@ -32,6 +32,6 @@ func main() {
 		context.JSON(http.StatusOK, requestBody)
 	})
 
-	router.Run("localhost:3030")
+	router.Run(":3100")
 
 }
