@@ -7,7 +7,6 @@ export default function UserLogin() {
   const [radioState, setRadioState] = useState("Student");
 
   const onRadioInputChange = (e) => {
-    console.log(e.target);
     setRadioState(e.target.value);
   };
 
@@ -42,19 +41,25 @@ export default function UserLogin() {
         <div className="mt-2 mb-6">
           <input
             type="radio"
+            value="Student"
             onChange={onRadioInputChange}
             checked={radioState === "Student"}
-            value="Student"
+            id="Student"
           />
-          <label className="ml-2 mr-20">Student</label>
+          <label htmlFor="Student" className="ml-2 mr-20">
+            Student
+          </label>
 
           <input
             type="radio"
             onChange={onRadioInputChange}
             checked={radioState === "Teacher"}
             value="Teacher"
+            id="Teacher"
           />
-          <label className="ml-2 mr-20">Teacher</label>
+          <label htmlFor="Teacher" className="ml-2 mr-20">
+            Teacher
+          </label>
         </div>
 
         <div className="flex flex-col gap-3 items-center w-full">

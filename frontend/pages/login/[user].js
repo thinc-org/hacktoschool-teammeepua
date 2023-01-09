@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "../../components/Button";
+import { Footer } from "../../components/Footer/Footer";
 
 export default function UserLogin() {
   const router = useRouter();
@@ -10,7 +11,6 @@ export default function UserLogin() {
   return (
     <div className="bg-stone-100 w-screen h-screen flex flex-col items-center justify-center">
       <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
-
       <Link
         href="/login"
         className="text-lg font-medium text-stone-500 mb-8 flex items-center"

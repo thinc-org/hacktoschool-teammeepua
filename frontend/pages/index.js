@@ -6,7 +6,6 @@ import { RecommendSection } from "../components/RecommendSection/RecommendSectio
 export default function Home() {
   return (
     <>
-      <Navbar />
       <RecommendSection />
       <FeatureSection />
       <Footer />
