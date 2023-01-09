@@ -1,8 +1,11 @@
+import Image from "next/image";
+import featurePic from "../../public/image-8.png";
+
 export const FeatureSection = () => {
   return (
     <section className="grid grid-cols-2 gap-x-40 h-[600px] px-40 py-28 bg-stone-100">
       {/* Change this later */}
-      <img src="https://images.all-free-download.com/images/graphiclarge/500_in_cash_210309.jpg" />
+      <Image src={featurePic} alt="" />
       <div>
         <h1 className="text-5xl font-bold">
           Learn a language in a playful way
