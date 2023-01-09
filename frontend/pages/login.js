@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Footer } from "../components/Footer";
+import { useRouter } from "next/router";
 
 export default function Login() {
   return (
@@ -33,6 +34,8 @@ export default function Login() {
 }
 
 const LoginContainer = (props) => {
+  let router = useRouter();
+
   return (
     <div className="flex flex-col items-center justify-center w-60 h-60 m-12">
       <div className="relative w-36 h-36 mb-14">
@@ -47,7 +50,7 @@ const LoginContainer = (props) => {
       <button
         className="rounded-full bg-cyan-700 hover:bg-cyan-900 px-5 py-2 text-white text-lg bottom-0"
         onClick={() => {
-          alert("Redirecting to " + props.name + " page");
+          router.push("/tlogin");
         }}
       >
         {props.name}
