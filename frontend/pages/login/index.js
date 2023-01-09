@@ -1,19 +1,14 @@
 import Image from "next/image";
-import { Footer } from "../../components/Footer";
 import { useRouter } from "next/router";
 import { Button } from "../../components/Button";
 
 export default function Login() {
   return (
-    <>
-      {/* HEADER HERE */}
+    <div className="bg-stone-100 w-screen h-screen flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
+      <h3 className="text-lg text-gray-500 font-medium mb-3">Log in as</h3>
 
-      <div className="absolute w-screen flex flex-col items-center top-32">
-        <h1 className="text-3xl mb-4 font-semibold">Login to Thic Academy</h1>
-        <h3 className="text-lg text-gray-500 font-semibold">Log in as</h3>
-      </div>
-
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <div className="w-screen flex flex-row justify-center">
           <LoginContainer
             src="/../public/instructors.png"
@@ -31,11 +26,7 @@ export default function Login() {
           />
         </div>
       </div>
-
-      <div className="absolute bottom-0 w-screen">
-        <Footer />
-      </div>
-    </>
+    </div>
   );
 }
 
