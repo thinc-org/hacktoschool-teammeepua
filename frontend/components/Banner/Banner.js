@@ -1,9 +1,10 @@
 import Image from "next/image";
+import bannerPic from "../../public/student.png";
 
 export const Banner = () => {
   return (
-    <div className="px-40 py-32 bg-stone-100">
-      <div className="grid grid-cols-2 gap-20">
+    <div className="px-40 py-24 bg-stone-100">
+      <div className="grid grid-cols-2 gap-10">
         <div>
           <p className="text-base uppercase text-cyan-700 font-bold">
             E-course platform
@@ -20,7 +21,7 @@ export const Banner = () => {
             Browse Course
           </button>
         </div>
-        <img src="https://images.all-free-download.com/images/graphiclarge/500_in_cash_210309.jpg" />
+        <Image className="w-full " src={bannerPic} />
       </div>
     </div>
   );
