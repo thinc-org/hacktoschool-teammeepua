@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "../components/Button";
+import { Footer } from "../components/Footer/Footer";
 
 export default function UserLogin() {
   const [radioState, setRadioState] = useState("Student");
@@ -11,71 +12,76 @@ export default function UserLogin() {
   };
 
   return (
-    <div className="bg-stone-100 w-screen h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-semibold mb-3">Sign Up to Thinc Academy</h1>
+    <>
+      <div className="bg-stone-100 py-12 w-screen h-max flex flex-col items-center">
+        <h1 className="text-3xl font-semibold mb-3">
+          Sign Up to Thinc Academy
+        </h1>
 
-      <Link
-        href="/login"
-        className="text-lg font-medium text-stone-500 mb-8 flex items-center"
-      >
-        <Image
-          className="inline mx-2"
-          src="/../public/vector.png"
-          width={16}
-          height={16}
-        />
-        <span>Return to Log In</span>
-      </Link>
-
-      <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
-        <TextField
-          header="Email"
-          type="text"
-          placeholder="something@email.com"
-        />
-        <TextField header="First Name" type="text" placeholder="John" />
-        <TextField header="Last Name" type="text" placeholder="Oliver" />
-        <TextField header="Password" type="password" placeholder="*******" />
-
-        <label>You are a</label>
-        <div className="mt-2 mb-6">
-          <input
-            type="radio"
-            value="Student"
-            onChange={onRadioInputChange}
-            checked={radioState === "Student"}
-            id="Student"
+        <Link
+          href="/login"
+          className="text-lg font-medium text-stone-500 mb-8 flex items-center"
+        >
+          <Image
+            className="inline mx-2"
+            src="/../public/vector.png"
+            width={16}
+            height={16}
           />
-          <label htmlFor="Student" className="ml-2 mr-20">
-            Student
-          </label>
+          <span>Return to Log In</span>
+        </Link>
 
-          <input
-            type="radio"
-            onChange={onRadioInputChange}
-            checked={radioState === "Teacher"}
-            value="Teacher"
-            id="Teacher"
+        <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
+          <TextField
+            header="Email"
+            type="text"
+            placeholder="something@email.com"
           />
-          <label htmlFor="Teacher" className="ml-2 mr-20">
-            Teacher
-          </label>
-        </div>
+          <TextField header="First Name" type="text" placeholder="John" />
+          <TextField header="Last Name" type="text" placeholder="Oliver" />
+          <TextField header="Password" type="password" placeholder="*******" />
 
-        <div className="flex flex-col gap-3 items-center w-full">
-          <Button value="Sign Up" />
-
-          <div>
-            <label className="font-medium">
-              By signing up, you agree to our privacy policy&nbsp;
+          <label>You are a</label>
+          <div className="mt-2 mb-6">
+            <input
+              type="radio"
+              value="Student"
+              onChange={onRadioInputChange}
+              checked={radioState === "Student"}
+              id="Student"
+            />
+            <label htmlFor="Student" className="ml-2 mr-20">
+              Student
             </label>
-            <Link href="" className="underline text-cyan-700 font-semibold">
-              Click Here
-            </Link>
+
+            <input
+              type="radio"
+              onChange={onRadioInputChange}
+              checked={radioState === "Teacher"}
+              value="Teacher"
+              id="Teacher"
+            />
+            <label htmlFor="Teacher" className="ml-2 mr-20">
+              Teacher
+            </label>
           </div>
-        </div>
-      </form>
-    </div>
+
+          <div className="flex flex-col gap-3 items-center w-full">
+            <Button value="Sign Up" />
+
+            <div>
+              <label className="font-medium">
+                By signing up, you agree to our privacy policy&nbsp;
+              </label>
+              <Link href="" className="underline text-cyan-700 font-semibold">
+                Click Here
+              </Link>
+            </div>
+          </div>
+        </form>
+      </div>
+      <Footer />
+    </>
   );
 }
 

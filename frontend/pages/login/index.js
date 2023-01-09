@@ -1,38 +1,40 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Button } from "../../components/Button";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 
 export default function Login() {
   return (
-    <div className="h-screen flex flex-col justify-between bg-stone-100">
-      <div className="w-screen max-h-full flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
-        <h3 className="text-lg text-gray-500 font-medium mb-3">Log in as</h3>
+    <>
+      <div className="pt-12 pb-20 flex flex-col h-max justify-between bg-stone-100">
+        <div className="w-screen flex flex-col items-center">
+          <h1 className="text-3xl font-semibold mb-3">
+            Login to Thinc Academy
+          </h1>
+          <h3 className="text-lg text-gray-500 font-medium mb-3">Log in as</h3>
 
-        <div className="flex flex-col items-center justify-center">
-          <div className="w-screen flex flex-row justify-center">
-            <LoginContainer
-              src="/../public/instructors.png"
-              name="Course Instructor"
-              href="/login/courseinstructor"
-            />
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-screen flex flex-row justify-center">
+              <LoginContainer
+                src="/../public/instructors.png"
+                name="Course Instructor"
+                href="/login/courseinstructor"
+              />
 
-            {/* Vertical line */}
-            <div className="border-l-2 border-solid border-stone-300"></div>
+              {/* Vertical line */}
+              <div className="border-l-2 border-solid border-stone-300"></div>
 
-            <LoginContainer
-              src="/../public/students.png"
-              name="Students"
-              href="/login/student"
-            />
+              <LoginContainer
+                src="/../public/students.png"
+                name="Students"
+                href="/login/student"
+              />
+            </div>
           </div>
         </div>
       </div>
-
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -9,50 +9,58 @@ export default function UserLogin() {
   const { user } = router.query;
 
   return (
-    <div className="bg-stone-100 w-screen h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
-      <Link
-        href="/login"
-        className="text-lg font-medium text-stone-500 mb-8 flex items-center"
-      >
-        <Image
-          className="inline mx-2"
-          src="/../public/vector.png"
-          width={16}
-          height={16}
-        />
-        <span>
-          {user === "student" ? "Course Instructor" : "Student"} Login
-        </span>
-      </Link>
+    <>
+      <div className="bg-stone-100 pt-12 pb-8 w-screen h-max flex flex-col items-center">
+        <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
+        <Link
+          href="/login"
+          className="text-lg font-medium text-stone-500 mb-8 flex items-center"
+        >
+          <Image
+            className="inline mx-2"
+            src="/../public/vector.png"
+            width={16}
+            height={16}
+          />
+          <span>
+            {user === "student" ? "Course Instructor" : "Student"} Login
+          </span>
+        </Link>
 
-      <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
-        <TextField
-          header={"Email"}
-          type="text"
-          placeholder="something@mail.com"
-        />
+        <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
+          <TextField
+            header={"Email"}
+            type="text"
+            placeholder="something@mail.com"
+          />
 
-        <TextField header={"Password"} type="password" placeholder="*******" />
+          <TextField
+            header={"Password"}
+            type="password"
+            placeholder="*******"
+          />
 
-        <div className="flex flex-col gap-3 items-center w-full">
-          <Button value="Log In" />
+          <div className="flex flex-col gap-3 items-center w-full">
+            <Button value="Log In" />
 
-          <div>
-            <NoLoginContainer
-              question="Forgot your password?"
-              linkName="Click Here"
-              href=""
-            />
-            <NoLoginContainer
-              question="Do not have an account yet?"
-              linkName="Sign Up"
-              href="/signup"
-            />
+            <div>
+              <NoLoginContainer
+                question="Forgot your password?"
+                linkName="Click Here"
+                href=""
+              />
+              <NoLoginContainer
+                question="Do not have an account yet?"
+                linkName="Sign Up"
+                href="/signup"
+              />
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
