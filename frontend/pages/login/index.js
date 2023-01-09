@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Footer } from "../components/Footer";
+import { Footer } from "../../components/Footer";
 import { useRouter } from "next/router";
-import { Button } from "../components/Button";
+import { Button } from "../../components/Button";
 
 export default function Login() {
   return (
@@ -18,7 +18,7 @@ export default function Login() {
           <LoginContainer
             src="/../public/instructors.png"
             name="Course Instructor"
-            href="/tlogin"
+            href="/login/courseinstructor"
           />
 
           {/* Vertical line */}
@@ -27,7 +27,7 @@ export default function Login() {
           <LoginContainer
             src="/../public/students.png"
             name="Students"
-            href="/slogin"
+            href="/login/student"
           />
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function Login() {
 }
 
 const LoginContainer = (props) => {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col items-center justify-center w-60 h-60 m-12">
