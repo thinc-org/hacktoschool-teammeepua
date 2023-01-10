@@ -1,5 +1,5 @@
 import Image from "next/image";
-import featurePic from "../../public/student-sitting.png";
+import featurePic from "../public/student-sitting.png";
 
 export const FeatureSection = () => {
   return (

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Button } from "../Button";
+import { Button } from "./Button";
 import Link from "next/link";
 
 export const Navbar = () => {

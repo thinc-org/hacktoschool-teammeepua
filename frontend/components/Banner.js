@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bannerPic from "../../public/student.png";
+import bannerPic from "../public/student.png";
 
 export const Banner = () => {
   return (
