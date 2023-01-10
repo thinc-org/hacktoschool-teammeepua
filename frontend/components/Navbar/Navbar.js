@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { Button } from "../Button";
+import Link from "next/link";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -11,7 +12,9 @@ export const Navbar = () => {
         <ul className="list-none whitespace-nowrap text-base">
           <li className="inline mx-4">Home</li>
           <li className="inline mx-4">Dashboard</li>
-          <li className="inline mx-4">Course Browser</li>
+          <li className="inline mx-4">
+            <Link href="/browse">Course Browser</Link>
+          </li>
         </ul>
       </div>
 

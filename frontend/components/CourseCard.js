@@ -4,7 +4,7 @@ import { Button } from "./Button";
 
 export default function CourseCard(props) {
   return (
-    <div className="w-[850x] h-[310px] bg-white rounded-xl shadow-md mb-4 overflow-hidden flex flex-row">
+    <div className="w-[850x] h-[310px] bg-white rounded-xl shadow-md mb-5 overflow-hidden flex flex-row">
       <div className="relative w-[310px] h-[310px] flex-none">
         <Image
           alt="Course Image"
