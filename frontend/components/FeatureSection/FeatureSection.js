@@ -7,10 +7,10 @@ export const FeatureSection = () => {
       {/* Change this later */}
       <Image className="sm:max-w-[300px] sm:mx-auto" src={featurePic} alt="" />
       <div>
-        <h1 className="text-5xl lg:text-4xl sm:text-center font-bold w-[14ch] sm:mx-auto">
+        <h1 className="text-5xl lg:text-4xl sm:text-center font-bold w-[14ch] sm:mx-auto tracking-tight">
           Learn a language in a playful way
         </h1>
-        <p className="text-lg lg:text-base sm:text-center font-semibold my-8 text-stone-500">
+        <p className="text-lg lg:text-base sm:text-center font-semibold my-8 text-stone-500 tracking-tight">
           Make learning words more fun with mini-games
         </p>
         <div className="flex sm:justify-center">
@@ -22,7 +22,7 @@ export const FeatureSection = () => {
           </div>
           <p className="text-4xl font-bold">600</p>
         </div>
-        <p className="text-stone-500 sm:text-center text-base lg:text-sm font-semibold">
+        <p className="text-stone-500 sm:text-center text-base lg:text-sm font-semibold tracking-tight">
           Active Users
         </p>
       </div>
