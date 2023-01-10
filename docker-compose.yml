@@ -24,9 +24,9 @@ services:
     container_name: postgres-database
     image: postgres:alpine
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=mepua
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=e_course
     ports:
       - "5432:5432"
     volumes:

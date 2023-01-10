@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/thamph/thinc-hacktoschool/database"
 	"net/http"
 )
 
@@ -12,6 +13,7 @@ type testStruct struct {
 }
 
 func main() {
+	database.ConnectDatabase()
 
 	router := gin.Default()
 
