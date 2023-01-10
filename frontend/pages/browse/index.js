@@ -47,7 +47,7 @@ export default function () {
             </div>
           </div>
         </div>
-        <PageSelector pageCount={5} />
+        <PageSelector pageCount={10} />
       </div>
       <Footer />
     </>

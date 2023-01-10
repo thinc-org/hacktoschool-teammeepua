@@ -1,3 +1,4 @@
+import { userAgent } from "next/server";
 import { useState } from "react";
 import { Button } from "../Button";
 import LeftArrow from "../SVGIcon/LeftArrow";
@@ -5,7 +6,7 @@ import RightArrow from "../SVGIcon/RightArrow";
 
 export default function PageSelector({ pageCount }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
+  let pages = generatePages(pageCount, currentPage, 7);
 
   const setPage = (page) => {
     if (page < 1) setCurrentPage(1);
@@ -19,15 +20,21 @@ export default function PageSelector({ pageCount }) {
         <LeftArrow />
       </PageButton>
 
-      {pages.map((i) => (
-        <PageButton
-          key={i}
-          selected={i === currentPage}
-          onClick={() => setPage(i)}
-        >
-          {i}
-        </PageButton>
-      ))}
+      {pages.map((i) =>
+        i > 0 ? (
+          <PageButton
+            key={i}
+            selected={i === currentPage}
+            onClick={() => setPage(i)}
+          >
+            {i}
+          </PageButton>
+        ) : (
+          <div className="w-11 h-11 flex items-end justify-center text-xl tracking-widest">
+            ...
+          </div>
+        )
+      )}
 
       <PageButton onClick={() => setPage(currentPage + 1)}>
         <RightArrow />
@@ -35,6 +42,29 @@ export default function PageSelector({ pageCount }) {
     </div>
   );
 }
+
+const generatePages = (pageCount, currentPage, limit) => {
+  let offset = 0;
+
+  if (pageCount <= limit)
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
+
+  currentPage = currentPage < 4 ? 4 : currentPage;
+  currentPage = currentPage > pageCount - 3 ? pageCount - 3 : currentPage;
+  offset = currentPage - 3;
+
+  let pages = Array.from({ length: limit }, (_, i) => i + offset);
+
+  // Place ... at the beginning
+  pages[0] = 1;
+  if (pages[1] != 2) pages[1] = 0;
+
+  // Place ... at the end
+  pages[limit - 1] = pageCount;
+  if (pages[limit - 2] != pageCount - 1) pages[limit - 2] = 0;
+
+  return pages;
+};
 
 const PageButton = (props) => {
   if (props.selected) {
