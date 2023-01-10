@@ -12,8 +12,16 @@ export const Footer = () => {
         <FooterList />
 
         <div className="flex ">
-          <FooterIcon src={CleverseLogo} name="Cleverse" href="#" />
-          <FooterIcon src={ThincLogo} name="Thinc." href="#" />
+          <FooterIcon
+            src={CleverseLogo}
+            name="Cleverse"
+            href="https://cleverse.com/"
+          />
+          <FooterIcon
+            src={ThincLogo}
+            name="Thinc."
+            href="https://thinc.in.th/"
+          />
         </div>
       </div>
 
