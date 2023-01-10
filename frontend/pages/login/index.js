@@ -6,7 +6,7 @@ import { Footer } from "../../components/Footer/Footer";
 export default function Login() {
   return (
     <>
-      <div className="pt-12 pb-20 flex flex-col h-max justify-between bg-stone-100">
+      <div className="pt-12 pb-[100px] flex flex-col h-max justify-between bg-stone-100">
         <div className="w-screen flex flex-col items-center">
           <h1 className="text-3xl font-semibold mb-3">
             Login to Thinc Academy

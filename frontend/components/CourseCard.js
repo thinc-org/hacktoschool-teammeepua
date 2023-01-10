@@ -10,7 +10,7 @@ export default function CourseCard(props) {
           alt="Course Image"
           src="/../public/course image.png"
           fill
-          className="object-fill"
+          className="object-cover"
         />
       </div>
       <div className="p-6 w-[400px] h-max overflow-hidden">

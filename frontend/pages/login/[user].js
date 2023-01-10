@@ -22,9 +22,7 @@ export default function UserLogin() {
             width={16}
             height={16}
           />
-          <span>
-            {user === "student" ? "Course Instructor" : "Student"} Login
-          </span>
+          <span>{user === "student" ? "Teacher" : "Student"} Login</span>
         </Link>
 
         <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
