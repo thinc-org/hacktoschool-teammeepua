@@ -9,7 +9,7 @@ export const Banner = () => {
           <p className="text-base xl:text-sm tracking-widest uppercase text-cyan-700 font-bold">
             E-course platform
           </p>
-          <h1 className="text-6xl xl:text-5xl lg:text-4xl sm:text-center tracking-tight font-bold leading-tight pt-6 pb-8 max-w-[16ch]">
+          <h1 className="text-6xl lg:text-5xl sm:text-center tracking-tight font-bold leading-tight pt-6 pb-8 max-w-[16ch]">
             Learning and teaching online, made easy.
           </h1>
           <p className="text-lg xl:text-base lg:text-sm sm:text-center tracking-tight font-semibold text-stone-500 leading-normal max-w-[35ch] pb-8">
