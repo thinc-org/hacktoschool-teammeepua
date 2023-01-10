@@ -2,6 +2,9 @@ import { FooterList } from "./FooterList";
 import { FooterIcon } from "./FooterIcon";
 import { FooterCopyright } from "./FooterCopyright";
 
+import CleverseLogo from "../../public/cleverse-logo.png";
+import ThincLogo from "../../public/thinc-logo.png";
+
 export const Footer = () => {
   return (
     <footer className="h-40 px-40 py-8 bg-stone-100 font-semibold text-stone-500">
@@ -9,16 +12,8 @@ export const Footer = () => {
         <FooterList />
 
         <div className="flex ">
-          <FooterIcon
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6NvsdaRO0-xTinu151_r5aZ0_mxjfgCnJ7XNwjC9csTxRS3pw9aZNZ-5gtcFHabv29Y&usqp=CAU"
-            name="Cleverse"
-            href="#"
-          />
-          <FooterIcon
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6NvsdaRO0-xTinu151_r5aZ0_mxjfgCnJ7XNwjC9csTxRS3pw9aZNZ-5gtcFHabv29Y&usqp=CAU"
-            name="Thinc."
-            href="#"
-          />
+          <FooterIcon src={CleverseLogo} name="Cleverse" href="#" />
+          <FooterIcon src={ThincLogo} name="Thinc." href="#" />
         </div>
       </div>
 
