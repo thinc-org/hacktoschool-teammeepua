@@ -7,10 +7,16 @@ import (
 	"log"
 )
 
+type DbInstance struct {
+	Db *gorm.DB
+}
+
+var DB DbInstance
+
 func ConnectDatabase() {
 	connectionString := "host=database user=mepua password=123456 dbname=e_course port=5432 sslmode=disable TimeZone=Asia/Bangkok"
 
-	database, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
 
 	if err != nil {
 		log.Fatal("failed to connect database")
@@ -18,6 +24,9 @@ func ConnectDatabase() {
 
 	log.Print("database is connected")
 
-	database.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Course{})
 
+	DB = DbInstance{
+		Db: db,
+	}
 }
