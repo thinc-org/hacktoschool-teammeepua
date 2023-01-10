@@ -1,5 +1,6 @@
 import CourseCard from "../../components/CourseCard";
 import { Footer } from "../../components/Footer/Footer";
+import PageSelector from "../../components/Pagination/PageSelector";
 
 export default function () {
   return (
@@ -46,7 +47,7 @@ export default function () {
             </div>
           </div>
         </div>
-        <div className="p-6">1 2 3 4 ...</div>
+        <PageSelector pageCount={5} />
       </div>
       <Footer />
     </>
