@@ -5,7 +5,7 @@ export const PopularCourse = () => {
         <p className="text-lg md:text-base font-semibold text-stone-500 my-3 sm:text-center">
           Current Most Popular Course
         </p>
-        <h1 className="text-3xl font-bold text-cyan-700 max-w-[20ch] sm:mx-auto sm:text-center">
+        <h1 className="text-4xl font-bold text-cyan-700 max-w-[20ch] sm:mx-auto sm:text-center">
           Abstract Data Structure and Algorithm (DSA)
         </h1>
       </div>
