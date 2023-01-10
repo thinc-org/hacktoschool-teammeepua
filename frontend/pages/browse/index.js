@@ -31,11 +31,16 @@ export default function () {
           </div>
 
           <div className="flex flex-col items-end">
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
+            <CourseCard
+              name="Abstract Data Structure and Algorithm (DSA)"
+              id="5403213"
+              instructor="Dr. Chris Dixon"
+              tags={["Technology", "Computer Science", "Data Science"]}
+              description="Practice your English and learn new things with the platform. Make
+              learning words more fun with mini-games. Some more random text here
+              would be fine."
+              onEnroll={() => {}}
+            />
           </div>
         </div>
       </div>
