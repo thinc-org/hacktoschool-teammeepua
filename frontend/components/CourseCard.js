@@ -4,7 +4,7 @@ import { Button } from "./Button";
 
 export default function CourseCard(props) {
   return (
-    <div className="w-[850x] h-[310px] bg-white rounded-xl shadow-md mb-5 overflow-hidden flex flex-row">
+    <div className="w-[860px] h-[310px] bg-white rounded-xl shadow-lg mb-5 overflow-hidden flex flex-row hover:scale-[1.025] transition">
       <div className="relative w-[310px] h-[310px] flex-none">
         <Image
           alt="Course Image"
@@ -13,7 +13,7 @@ export default function CourseCard(props) {
           className="object-cover"
         />
       </div>
-      <div className="p-6 w-[400px] h-max overflow-hidden">
+      <div className="p-6 w-full h-full relative">
         <h1 className="font-bold text-xl text-stone-500 mb-2">{props.name}</h1>
         <div className="text-sm mb-2">
           <span className="font-bold tracking-widest text-cyan-700 mr-4">
@@ -21,15 +21,17 @@ export default function CourseCard(props) {
           </span>
           <span className="font-semibold">{props.instructor}</span>
         </div>
-        <div className="text-stone-400 font-medium text-xs flex flex-row gap-3 mb-3">
+        <div className="text-stone-400 font-medium text-xs relative flex flex-row gap-3 mb-3">
           {props.tags.map((e) => (
             <span key={e}>{e}</span>
           ))}
         </div>
+
         <div className="mb-3 h-[96px] overflow-hidden text-ellipsis">
           {props.description}
         </div>
-        <div>
+
+        <div className="absolute bottom-0 py-4 w-full bg-white">
           <Button value="Enroll" onClick={props.onEnroll} />
           <Link href="" className="underline font-md text-sm ml-4">
             View Example

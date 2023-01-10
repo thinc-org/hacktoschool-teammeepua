@@ -1,6 +1,4 @@
-import { userAgent } from "next/server";
 import { useState } from "react";
-import { Button } from "../Button";
 import LeftArrow from "../SVGIcon/LeftArrow";
 import RightArrow from "../SVGIcon/RightArrow";
 

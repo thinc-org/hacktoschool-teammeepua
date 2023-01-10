@@ -38,10 +38,21 @@ export default function () {
                 name="Abstract Data Structure and Algorithm (DSA)"
                 id="5403213"
                 instructor="Dr. Chris Dixon"
+                tags={[
+                  "Technology",
+                  "Computer Science",
+                  "Data Science",
+                  "Intrastructure",
+                ]}
+                description="Practice your English and learn new things with the platform. Make learning words more fun with mini-games. Some more random text here would be fine."
+                onEnroll={() => {}}
+              />
+              <CourseCard
+                name="Abstract Data Structure and Algorithm (DSA)"
+                id="5403213"
+                instructor="Dr. Chris Dixon"
                 tags={["Technology", "Computer Science", "Data Science"]}
-                description="Practice your English and learn new things with the platform. Make
-              learning words more fun with mini-games. Some more random text here
-              would be fine."
+                description="Practice your English and learn new things with the platform. Make learning words more fun with mini-games. Some more random text here would be fine."
                 onEnroll={() => {}}
               />
             </div>
