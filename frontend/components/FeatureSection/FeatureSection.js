@@ -3,17 +3,17 @@ import featurePic from "../../public/student-sitting.png";
 
 export const FeatureSection = () => {
   return (
-    <section className="grid grid-cols-2 gap-x-40 h-[600px] px-40 py-28 bg-stone-100">
+    <section className="grid grid-cols-2 sm:grid-cols-1 gap-x-40 xl:gap-x-20 lg:gap-x-10 h-[600px] px-40 lg:px-20 md:px-10 sm:px-4 py-28 lg:py-14 sm:py-7 bg-stone-100">
       {/* Change this later */}
-      <Image src={featurePic} alt="" />
+      <Image className="sm:max-w-[300px] sm:mx-auto" src={featurePic} alt="" />
       <div>
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-5xl lg:text-4xl sm:text-center font-bold w-[14ch] sm:mx-auto">
           Learn a language in a playful way
         </h1>
-        <p className="text-lg font-semibold my-8 text-stone-500">
+        <p className="text-lg lg:text-base sm:text-center font-semibold my-8 text-stone-500">
           Make learning words more fun with mini-games
         </p>
-        <div className="flex">
+        <div className="flex sm:justify-center">
           <div>
             {/* Change this later */}
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
@@ -22,7 +22,9 @@ export const FeatureSection = () => {
           </div>
           <p className="text-4xl font-bold">600</p>
         </div>
-        <p className="text-stone-500 text-base font-semibold">Active Users</p>
+        <p className="text-stone-500 sm:text-center text-base lg:text-sm font-semibold">
+          Active Users
+        </p>
       </div>
     </section>
   );
