@@ -14,7 +14,7 @@ export default function UserLogin() {
         <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
         <Link
           href="/login"
-          className="text-lg font-medium text-stone-500 mb-8 flex items-center"
+          className="text-lg font-medium text-stone-500 mb-8 flex items-center hover:-translate-x-2 transition"
         >
           <Image
             className="inline mx-2"

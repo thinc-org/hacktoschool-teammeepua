@@ -77,7 +77,7 @@ const PageButton = (props) => {
   } else
     return (
       <button
-        className="rounded-full border-[3px] border-cyan-700 w-11 h-11 flex items-center justify-center font-bold text-base text-cyan-700 hover:border-cyan-600 hover:bg-cyan-600 hover:text-white"
+        className="rounded-full border-[3px] border-cyan-700 w-11 h-11 flex items-center justify-center font-bold text-base text-cyan-700 hover:border-cyan-600 hover:bg-cyan-600 hover:text-white hover:ease-linear transition"
         onClick={props.onClick}
       >
         {props.children}

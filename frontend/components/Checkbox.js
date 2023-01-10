@@ -17,13 +17,12 @@ export default function Checkbox(props) {
         height="24"
         viewBox="0 0 48 48"
       >
-        {isChecked ? (
-          <path
-            d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"
-            strokeWidth="4"
-            stroke="currentColor"
-          />
-        ) : undefined}
+        <path
+          className={isChecked ? "" : "hidden"}
+          d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"
+          strokeWidth="4"
+          stroke="currentColor"
+        />
       </svg>
       {props.label}
     </label>
