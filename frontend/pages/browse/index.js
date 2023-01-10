@@ -1,3 +1,4 @@
+import Checkbox from "../../components/Checkbox";
 import CourseCard from "../../components/CourseCard";
 import { Footer } from "../../components/Footer/Footer";
 import PageSelector from "../../components/Pagination/PageSelector";
@@ -21,7 +22,7 @@ export default function () {
           <div className="flex flex-row w-max text-stone-500">
             <div className="flex flex-col items-start w-[320px]">
               <h3 className="font-semibold text-xl mb-4">Categories</h3>
-              <ul className="font-light text-md text-stone-400">
+              <ul className="font-light text-md text-stone-500">
                 <Filter name="Technology" />
                 <Filter name="Computer Science" />
                 <Filter name="Data Science" />
@@ -38,12 +39,7 @@ export default function () {
                 name="Abstract Data Structure and Algorithm (DSA)"
                 id="5403213"
                 instructor="Dr. Chris Dixon"
-                tags={[
-                  "Technology",
-                  "Computer Science",
-                  "Data Science",
-                  "Intrastructure",
-                ]}
+                tags={["Technology", "Computer Science", "Data Science"]}
                 description="Practice your English and learn new things with the platform. Make learning words more fun with mini-games. Some more random text here would be fine."
                 onEnroll={() => {}}
               />
@@ -68,10 +64,7 @@ export default function () {
 const Filter = (props) => {
   return (
     <li className="mb-1">
-      <input type="checkbox" id={props.name} className="mr-2" />
-      <label htmlFor={props.name} className="text-sm">
-        {props.name}
-      </label>
+      <Checkbox label={props.name} />
     </li>
   );
 };
