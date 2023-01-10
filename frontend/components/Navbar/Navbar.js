@@ -13,7 +13,7 @@ export const Navbar = () => {
           <li className="inline mx-4">Home</li>
           <li className="inline mx-4">Dashboard</li>
           <li className="inline mx-4">
-            <Link href="/browse">Course Browser</Link>
+            <Link href="/browse">Courses</Link>
           </li>
         </ul>
       </div>
