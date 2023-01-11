@@ -1,19 +1,28 @@
+import { useState } from "react";
+
 import { NavbarMenu } from "./NavbarMenu";
+import { NavbarMenuMobile } from "./NavbarMenuMobile";
 import { NavbarLogo } from "./NavbarLogo";
 import { NavbarAuth } from "./NavbarAuth";
 import { NavbarHam } from "./NavbarHam";
 
 export const Navbar = () => {
+  const [isShowMobileMenu, setShowMobileMenu] = useState(false);
+
   return (
     <nav className="flex items-center justify-between px-[10%] lg:px-20 md:px-10 sm:px-4 h-20 w-full bg-stone-100">
       {/* mobile only */}
-      <NavbarHam onClick={() => console.log("Menu")} />
+      <NavbarHam onClick={() => setShowMobileMenu(true)} />
       <div className="flex items-center lg:flex-row-reverse">
         <NavbarLogo />
         {/* desktop only*/}
         <div className="h-[20px] w-px bg-stone-300 lg:hidden"></div>{" "}
         {/* grey line */}
         <NavbarMenu />
+        <NavbarMenuMobile
+          visible={isShowMobileMenu}
+          onExit={() => setShowMobileMenu(false)}
+        />
       </div>
 
       <NavbarAuth />
