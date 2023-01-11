@@ -3,7 +3,7 @@ import bannerPic from "../public/student.png";
 
 export const Banner = () => {
   return (
-    <div className="px-[10%] lg:px-20 md:px-10 sm:px-4 py-10 bg-stone-100">
+    <section className="px-[10%] lg:px-20 md:px-10 sm:px-4 py-10 bg-stone-100">
       <div className="grid grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 gap-10 md:gap-6 sm:gap-10">
         <div className="flex flex-col justify-center sm:justify-start sm:items-center sm:h-fit">
           <p className="text-base xl:text-sm tracking-widest uppercase text-cyan-700 font-bold">
@@ -28,6 +28,6 @@ export const Banner = () => {
           src={bannerPic}
         />
       </div>
-    </div>
+    </section>
   );
 };
