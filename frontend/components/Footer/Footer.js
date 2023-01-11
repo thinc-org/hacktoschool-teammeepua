@@ -7,11 +7,11 @@ import ThincLogo from "../../public/thinc-logo.png";
 
 export const Footer = () => {
   return (
-    <footer className="h-40 px-40 py-8 bg-stone-100 font-semibold text-stone-500">
-      <div className="flex justify-between ">
+    <footer className="px-[10%] lg:px-20 md:px-10 sm:px-4 py-8 bg-stone-100 font-semibold text-stone-500">
+      <div className="flex justify-between md:justify-around">
         <FooterList />
 
-        <div className="flex ">
+        <div className="flex lg:flex-col lg:relative top-[-8px] md:top-0">
           <FooterIcon
             src={CleverseLogo}
             name="Cleverse"
