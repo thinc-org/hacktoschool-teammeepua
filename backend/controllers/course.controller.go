@@ -16,3 +16,9 @@ func CreateCourse(context *gin.Context) {
 	database.DB.Db.Create(&course)
 	context.JSON(http.StatusOK, course)
 }
+
+func GetAllCourse(context *gin.Context) {
+	var courses []models.Course
+	database.DB.Db.Find(&courses)
+	context.JSON(http.StatusOK, courses)
+}
