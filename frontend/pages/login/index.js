@@ -22,7 +22,7 @@ export default function Login() {
               />
 
               {/* Vertical line */}
-              <div className="border-l-2 border-solid border-stone-300"></div>
+              <div className="border-l-2 border-solid border-stone-300" />
 
               <LoginContainer
                 src="/../public/students.png"
