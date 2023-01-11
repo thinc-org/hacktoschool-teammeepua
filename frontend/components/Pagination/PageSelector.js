@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
 import LeftArrow from "../SVGIcon/LeftArrow";
 import RightArrow from "../SVGIcon/RightArrow";
 
-export default function PageSelector({ pageCount }) {
-  const [currentPage, setCurrentPage] = useState(1);
+export default function PageSelector({ pageCount, currentPage }) {
+  const router = useRouter();
+
   let pages = generatePages(pageCount, currentPage, 7);
 
   const setPage = (page) => {
-    if (page < 1) setCurrentPage(1);
-    else if (page > pageCount) setCurrentPage(pageCount);
-    else setCurrentPage(page);
+    let nextPage = page;
+
+    if (page < 1) nextPage = 1;
+    else if (page > pageCount) nextPage = pageCount;
+
+    router.push(`/browse/${nextPage}`);
   };
 
   return (
@@ -18,14 +22,14 @@ export default function PageSelector({ pageCount }) {
         <LeftArrow />
       </PageButton>
 
-      {pages.map((i) =>
-        i > 0 ? (
+      {pages.map((e, i) =>
+        e > 0 ? (
           <PageButton
             key={i}
-            selected={i === currentPage}
-            onClick={() => setPage(i)}
+            selected={e === currentPage}
+            onClick={() => setPage(e)}
           >
-            {i}
+            {e}
           </PageButton>
         ) : (
           <div className="w-11 h-11 flex items-end justify-center text-xl tracking-widest">

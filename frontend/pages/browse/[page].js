@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
 import Checkbox from "../../components/Checkbox";
 import CourseCard from "../../components/CourseCard";
 import { Footer } from "../../components/Footer/Footer";
@@ -23,13 +23,8 @@ const dummyData = {
 const courses = [5403213, 2110327];
 
 export default function Browse() {
-  const Filter = (props) => {
-    return (
-      <li className="mb-1">
-        <Checkbox label={props.label} />
-      </li>
-    );
-  };
+  const router = useRouter();
+  const { page } = router.query;
 
   return (
     <>
@@ -68,12 +63,20 @@ export default function Browse() {
             </div>
           </div>
         </div>
-        <PageSelector pageCount={10} />
+        <PageSelector pageCount={10} currentPage={parseInt(page)} />
       </div>
       <Footer />
     </>
   );
 }
+
+const Filter = (props) => {
+  return (
+    <li className="mb-1">
+      <Checkbox label={props.label} />
+    </li>
+  );
+};
 
 /*
 
