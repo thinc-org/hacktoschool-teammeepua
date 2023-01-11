@@ -1,5 +1,4 @@
 import { Button } from "../Button";
-import { CourseCard } from "./CourseCard";
 import { OtherCourse } from "./OtherCourse";
 import { PopularCourse } from "./PopularCourse";
 

@@ -1,7 +1,7 @@
 export const BannerInfo = () => {
   return (
     <div className="flex flex-col justify-center sm:justify-start sm:items-center sm:h-fit">
-      <p className="text-base xl:text-sm tracking-widest uppercase text-cyan-700 font-bold">
+      <p className="text-base xl:text-sm sm:text-xs tracking-widest uppercase text-cyan-700 font-bold">
         E-course platform
       </p>
       <h1 className="text-6xl xl:text-5xl lg:text-4xl sm:text-center tracking-tight font-bold leading-tight pt-6 pb-8 max-w-[16ch]">

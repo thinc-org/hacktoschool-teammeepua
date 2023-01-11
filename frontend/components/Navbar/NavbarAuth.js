@@ -4,7 +4,7 @@ export const NavbarAuth = () => {
   const router = useRouter();
 
   return (
-    <div className="flex">
+    <div className="flex lg:hidden">
       {/* Change this later */}
       <button className="text-base mx-6" onClick={() => router.push("/signup")}>
         Sign Up

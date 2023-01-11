@@ -8,7 +8,7 @@ export const Banner = () => {
       <div className="grid grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 gap-10 md:gap-6 sm:gap-10">
         <BannerInfo />
         <Image
-          className="w-full aspect-square object-contain sm:max-h-[300px] sm:aspect-auto"
+          className="w-full aspect-square object-contain max-w-[700px] sm:max-w-[300px] sm:aspect-auto mx-auto"
           src={bannerPic}
         />
       </div>

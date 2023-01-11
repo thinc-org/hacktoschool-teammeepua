@@ -11,7 +11,7 @@ export const Footer = () => {
       <div className="flex justify-between md:justify-around">
         <FooterList />
 
-        <div className="flex lg:flex-col lg:relative top-[-8px] md:top-0">
+        <div className="flex lg:flex-col lg:relative top-[-8px]">
           <FooterIcon
             src={CleverseLogo}
             name="Cleverse"

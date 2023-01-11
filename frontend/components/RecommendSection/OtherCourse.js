@@ -1,4 +1,4 @@
-import { CourseCard } from "./CourseCard";
+import { RecommendCard } from "./RecommendCard";
 
 export const OtherCourse = () => {
   return (
@@ -7,9 +7,9 @@ export const OtherCourse = () => {
         Other popular courses
       </p>
       <div className="flex justify-between sm:flex-col sm:items-center">
-        <CourseCard name="Machine Learning" />
-        <CourseCard name="Start Front-end with React" />
-        <CourseCard name="Start Back-end with Node.js" />
+        <RecommendCard name="Machine Learning" />
+        <RecommendCard name="Start Front-end with React" />
+        <RecommendCard name="Start Back-end with Node.js" />
       </div>
     </div>
   );
