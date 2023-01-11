@@ -4,9 +4,11 @@ import ThincLogo from "../../public/thinc-logo.png";
 
 export const NavbarLogo = () => {
   return (
-    <Link href="/" className="flex">
+    <Link href="/" className="flex lg:absolute lg:left-0 lg:right-0 lg:justify-center">
       <Image src={ThincLogo} width={32} height={32} />
-      <p className="text-xl font-bold mx-6 tracking-tight">Thinc Academy</p>
+      <p className="text-xl lg:text-lg font-bold mx-6 tracking-tight">
+        Thinc Academy
+      </p>
     </Link>
   );
 };
