@@ -9,7 +9,7 @@ export const Navbar = () => {
   const router = useRouter();
 
   return (
-    <nav className="flex items-center justify-between px-[10%] h-20 w-full bg-stone-100">
+    <nav className="flex items-center justify-between px-[10%] lg:px-20 md:px-10 sm:px-4 h-20 w-full bg-stone-100">
       <div className="flex items-center">
         <Link href="/" className="flex">
           <Image src={ThincLogo} width={32} height={32} />
