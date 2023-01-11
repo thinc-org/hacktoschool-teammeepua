@@ -10,7 +10,7 @@ export const NavbarMenu = () => {
         <Link href="/dashboard">Dashboard</Link>
       </li>
       <li className="inline mx-4 lg:hidden">
-        <Link href="/browse">Courses</Link>
+        <Link href="/browse/1">Courses</Link>
       </li>
     </ul>
   );

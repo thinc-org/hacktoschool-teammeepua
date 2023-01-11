@@ -8,7 +8,11 @@ export default function Checkbox(props) {
       <input
         type="checkbox"
         className="appearance-none"
-        onChange={() => setChecked(!isChecked)}
+        onChange={() => {
+          setChecked(!isChecked);
+          if (props.onChange !== undefined)
+            props.onChange({ label: props.label, value: !isChecked });
+        }}
       />
       <svg
         className="inline-block w-5 h-5 border-2 rounded-sm border-stone-500 text-stone-500 mr-3"
