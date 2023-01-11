@@ -1,10 +1,11 @@
 package database
 
 import (
+	"log"
+
 	"github.com/thamph/thinc-hacktoschool/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 type DbInstance struct {
@@ -24,7 +25,7 @@ func ConnectDatabase() {
 
 	log.Print("database is connected")
 
-	db.AutoMigrate(&models.User{}, &models.Course{})
+	db.AutoMigrate(&models.User{}, &models.Course{}, &models.Enrollment{}, &models.Student{})
 
 	DB = DbInstance{
 		Db: db,
