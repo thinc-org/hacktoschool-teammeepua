@@ -27,6 +27,8 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
             <ItemTab href="/">Home</ItemTab>
             <ItemTab href="/dashboard">Dashboard</ItemTab>
             <ItemTab href="/browse/1">Courses</ItemTab>
+            <ItemTab href="/signup">Sign Up</ItemTab>
+            <ItemTab href="/login">Log In</ItemTab>
           </ul>
         </div>
 
