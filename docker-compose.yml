@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+  backend:
+    container_name: backend
+    build: ./backend
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./backend:/app
+    command: air run main.go -b 0.0.0.0
+
+  database:
+    container_name: postgres-database
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=mepua
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=e_course
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-db-data:
