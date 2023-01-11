@@ -7,7 +7,7 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
     <>
       <div
         className={`
-          absolute left-0 top-0 w-screen h-screen z-10 flex flex-row
+          absolute left-0 top-0 w-screen h-screen z-20 flex flex-row
           ease-in-out transition-all duration-200
           ${visible ? "translate-x-0" : "-translate-x-full"}
         `}
@@ -37,7 +37,7 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
       {/* Black screen behind */}
       <div
         className={`
-        absolute left-0 top-0 w-screen h-screen bg-black bg-opacity-50
+        absolute left-0 top-0 w-screen h-screen bg-black bg-opacity-50 z-10
         ${visible ? "" : "hidden"}
       `}
       />
@@ -53,7 +53,6 @@ const ItemTab = (props) => {
       className="hover:bg-stone-200 w-full pl-10 py-5 ease-in-out transition-all cursor-pointer"
       onClick={() => router.push(props.href)}
     >
-      {/* <Link href={props.href}>{props.children}</Link> */}
       {props.children}
     </li>
   );
