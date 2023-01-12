@@ -18,7 +18,7 @@ func main() {
 	router.Use(cors.New(config))
 
 	router.POST("/api/create_course", controllers.CreateCourse)
-	router.GET("/api/get_all_courses", controllers.GetAllCourse)
+	router.GET("/api/browse_course", controllers.SearchCourse)
 	router.POST(("/api/signup"), controllers.CreateUser)
 	router.GET("/api/login", controllers.CheckLogin)
 	router.POST("/api/enroll", controllers.EnrollCourse)

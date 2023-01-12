@@ -12,5 +12,5 @@ func CreateStudent(context *gin.Context, user *models.User) {
 	var student models.Student
 	student.User = *user
 	database.DB.Db.Create(&student)
-	context.JSON(http.StatusOK, student.User)
+	context.JSON(http.StatusOK, gin.H{"userID": student.UserID})
 }
