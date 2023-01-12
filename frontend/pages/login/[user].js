@@ -4,9 +4,14 @@ import { useRouter } from "next/router";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer/Footer";
 
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/userSlice";
+
 export default function UserLogin() {
   const router = useRouter();
   const { user } = router.query;
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -25,7 +30,12 @@ export default function UserLogin() {
           <span>{user === "student" ? "Teacher" : "Student"} Login</span>
         </Link>
 
-        <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
+        <form
+          className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <TextField
             header={"Email"}
             type="text"
@@ -39,7 +49,13 @@ export default function UserLogin() {
           />
 
           <div className="flex flex-col gap-3 items-center w-full">
-            <Button value="Log In" />
+            <Button
+              value="Log In"
+              onClick={() => {
+                dispatch(setUser("Billy"));
+                router.push("/dashboard");
+              }}
+            />
 
             <div>
               <NoLoginContainer

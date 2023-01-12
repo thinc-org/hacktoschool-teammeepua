@@ -1,9 +1,8 @@
-import { useRouter } from "next/router";
 import { Footer } from "../../components/Footer/Footer";
 import CourseCard from "../../components/CourseCard";
 import ProfileBanner from "../../components/Dashboard/ProfileBanner";
 import Link from "next/link";
-import { Button } from "../../components/Button";
+import { useSelector } from "react-redux";
 
 const dummyData = {
   5403213: {
@@ -24,14 +23,13 @@ const dummyData = {
 const courses = [5403213, 2110327];
 
 export default function () {
-  const router = useRouter();
-  const { user } = router.query;
+  const user = useSelector((state) => state.user);
 
   return (
     <>
       <div className="bg-stone-100 w-screen flex flex-row justify-center pt-8">
         <div className="w-[350px] h-max flex flex-col justify-start gap-4">
-          <ProfileBanner name="Alex" />
+          <ProfileBanner name={user.name} />
 
           <SubProfile label="Display Name">Alex</SubProfile>
           <SubProfile label="Full Name">Alex Morphy</SubProfile>
