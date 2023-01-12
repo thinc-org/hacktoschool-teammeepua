@@ -1,11 +1,13 @@
 package controllers
 
 import (
+	"fmt"
+	"log"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/thamph/thinc-hacktoschool/database"
 	"github.com/thamph/thinc-hacktoschool/models"
-	"log"
-	"net/http"
 )
 
 type EnrollmentData struct {
@@ -21,22 +23,14 @@ func EnrollCourse(context *gin.Context) {
 	if err := context.BindJSON(&data); err != nil {
 		log.Fatal(err)
 	}
-	student.UserID = data.UserID
-	course.ID = data.CourseID
-
-	if err := database.DB.Db.First(&student); err != nil {
-		log.Fatal(err)
-	}
-	if err := database.DB.Db.First(&course); err != nil {
-		log.Fatal(err)
-	}
+	database.DB.Db.Where("user_id = ?", data.UserID).First(&student)
+	database.DB.Db.Where("id = ?", data.CourseID).First(&course)
+	fmt.Println(student.ID, course.ID)
 
 	enrollment.Student = student
 	enrollment.Course = course
 
-	if err := database.DB.Db.Create(&enrollment); err != nil {
-		log.Fatal(err)
-	}
+	database.DB.Db.Create(&enrollment)
 
 	context.JSON(http.StatusOK, gin.H{"message": "enrollment is successfully"})
 }
