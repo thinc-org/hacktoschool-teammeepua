@@ -29,8 +29,7 @@ export default function UserLogin() {
     axios
       .post("http://localhost:3100/api/signup", message)
       .then((res) => {
-        dispatch(login(res.data));
-        router.push("/dashboard");
+        router.push("/login");
       })
       .catch((err) => console.log(err));
   };

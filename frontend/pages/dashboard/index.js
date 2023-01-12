@@ -43,7 +43,7 @@ export default function () {
           )}
 
           {data.role === "instructor" && (
-            <div className="mb-6">
+            <div className="mb-4">
               <h1 className="font-semibold text-2xl mb-2">
                 Here are all the courses you are managing
               </h1>
