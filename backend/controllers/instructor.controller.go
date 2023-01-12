@@ -12,5 +12,5 @@ func CreateInstructor(context *gin.Context, user *models.User) {
 	var instructor models.Instructor
 	instructor.User = *user
 	database.DB.Db.Create(&instructor)
-	context.JSON(http.StatusOK, instructor)
+	context.JSON(http.StatusOK, instructor.User)
 }
