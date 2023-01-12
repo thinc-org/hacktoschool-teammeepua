@@ -3,7 +3,6 @@ import { X } from "../SVGIcon/X";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/userSlice";
-import RightArrow from "../SVGIcon/RightArrow";
 
 export const NavbarMenuMobile = ({ visible, onExit }) => {
   const dispatch = useDispatch();

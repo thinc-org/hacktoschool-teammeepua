@@ -7,11 +7,15 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
 import axios from "axios";
+import { useState } from "react";
 
 export default function UserLogin() {
   const router = useRouter();
   const { user } = router.query;
+
   const dispatch = useDispatch();
+
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const {
     register,
@@ -34,7 +38,10 @@ export default function UserLogin() {
         dispatch(login(res.data));
         router.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrorMessage("Incorrect email or password.");
+        console.log(err);
+      });
   };
 
   return (
@@ -76,10 +83,16 @@ export default function UserLogin() {
             error={errors}
           />
 
-          <div className="flex flex-col gap-3 items-center w-full">
-            <Button value="Log In" />
+          {errorMessage !== undefined && (
+            <div className="border border-red-400 bg-red-400 bg-opacity-10 w-full text-center text-red-600 rounded-lg py-3 mb-4">
+              {errorMessage}
+            </div>
+          )}
 
-            <div>
+          <div className="flex flex-col gap-3 items-center w-full">
+            <Button>Log In</Button>
+
+            <div className="flex flex-col items-center">
               <NoLoginContainer
                 question="Forgot your password?"
                 linkName="Click Here"

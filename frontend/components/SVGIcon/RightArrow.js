@@ -1,4 +1,4 @@
-export default function RightArrow(props) {
+export const RightArrow = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,4 +16,4 @@ export default function RightArrow(props) {
       />
     </svg>
   );
-}
+};

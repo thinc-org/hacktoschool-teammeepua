@@ -6,12 +6,9 @@ import { useForm } from "react-hook-form";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer/Footer";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { login } from "../store/userSlice";
 
 export default function UserLogin() {
   const [radioState, setRadioState] = useState("student");
-  const dispatch = useDispatch();
   const router = useRouter();
   const {
     register,
@@ -29,8 +26,7 @@ export default function UserLogin() {
     axios
       .post("http://localhost:3100/api/signup", message)
       .then((res) => {
-        dispatch(login(res.data));
-        router.push("/dashboard");
+        router.push("/login");
       })
       .catch((err) => console.log(err));
   };
@@ -119,7 +115,7 @@ export default function UserLogin() {
           </div>
 
           <div className="flex flex-col gap-3 items-center w-full">
-            <Button value="Sign Up" />
+            <Button>Sign Up</Button>
 
             <div>
               <label className="font-medium">
