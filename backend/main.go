@@ -15,7 +15,7 @@ func main() {
 	router.GET("/api/get_all_courses", controllers.GetAllCourse)
 	router.POST(("/api/signup"), controllers.CreateUser)
 	router.GET("/api/login", controllers.CheckLogin)
-
+	router.POST("/api/enroll", controllers.EnrollCourse)
 	router.Run(":3100")
 
 }
