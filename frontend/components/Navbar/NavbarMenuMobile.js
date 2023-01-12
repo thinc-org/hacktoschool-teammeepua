@@ -3,6 +3,7 @@ import { X } from "../SVGIcon/X";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/userSlice";
+import RightArrow from "../SVGIcon/RightArrow";
 
 export const NavbarMenuMobile = ({ visible, onExit }) => {
   const dispatch = useDispatch();
@@ -42,9 +43,12 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
             )}
 
             {data.isLoggedIn && (
-              <ItemTab href="" onClick={() => dispatch(logout())}>
+              <li
+                className="hover:bg-stone-200 w-full pl-10 py-5 ease-in-out transition-all cursor-pointer"
+                onClick={() => dispatch(logout())}
+              >
                 Sign Out
-              </ItemTab>
+              </li>
             )}
           </ul>
         </div>
@@ -70,10 +74,7 @@ const ItemTab = (props) => {
   return (
     <li
       className="hover:bg-stone-200 w-full pl-10 py-5 ease-in-out transition-all cursor-pointer"
-      onClick={() => {
-        router.push(props.href);
-        props.onClick();
-      }}
+      onClick={() => router.push(props.href)}
     >
       {props.children}
     </li>
