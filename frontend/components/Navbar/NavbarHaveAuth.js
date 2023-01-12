@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import RightArrow from "../SVGIcon/RightArrow";
 import { logout } from "../../store/userSlice";
+import RightArrow from "../SVGIcon/RightArrow";
 
 export const NavbarHaveAuth = () => {
   const router = useRouter();

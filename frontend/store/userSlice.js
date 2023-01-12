@@ -8,7 +8,7 @@ const initialState = {
     lastName: "lastName",
     displayName: "displayName",
     role: "role",
-    isLoggedIn: true,
+    isLoggedIn: false,
   },
 };
 
