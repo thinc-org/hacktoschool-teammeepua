@@ -1,4 +1,4 @@
-export default function (props) {
+export const ProfileBanner = (props) => {
   return (
     <div className="flex flex-row items-center mb-4">
       <div
@@ -15,4 +15,4 @@ export default function (props) {
       </div>
     </div>
   );
-}
+};
