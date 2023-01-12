@@ -32,7 +32,10 @@ export default function PageSelector({ pageCount, currentPage }) {
             {e}
           </PageButton>
         ) : (
-          <div className="w-11 h-11 flex items-end justify-center text-xl tracking-widest">
+          <div
+            className="w-11 h-11 flex items-end justify-center text-xl tracking-widest"
+            key={i}
+          >
             ...
           </div>
         )

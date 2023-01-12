@@ -77,11 +77,3 @@ const Filter = (props) => {
     </li>
   );
 };
-
-/*
-
-TODO:
-- filer courses from tags
-- implements course content
-
-*/

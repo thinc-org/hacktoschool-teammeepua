@@ -5,9 +5,9 @@ import { FooterCopyright } from "./FooterCopyright";
 import CleverseLogo from "../../public/cleverse-logo.png";
 import ThincLogo from "../../public/thinc-logo.png";
 
-export const Footer = () => {
+export const Footer = (props) => {
   return (
-    <footer className="px-[10%] lg:px-20 md:px-10 sm:px-4 py-8 bg-stone-100 font-semibold text-stone-500">
+    <footer className={`px-[10%] lg:px-20 md:px-10 sm:px-4 py-8 bg-stone-100 font-semibold text-stone-500 ${props.fixed ? "fixed" : "block"} bottom-0 w-full`}>
       <div className="flex justify-between md:justify-around">
         <FooterList />
 
