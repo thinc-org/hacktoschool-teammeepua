@@ -1,8 +1,14 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import X from "../SVGIcon/X";
+import { X } from "../SVGIcon/X";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/userSlice";
+import RightArrow from "../SVGIcon/RightArrow";
 
 export const NavbarMenuMobile = ({ visible, onExit }) => {
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.user);
+
   return (
     <>
       <div
@@ -14,7 +20,8 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
       >
         <div className="bg-white w-[500px] h-full">
           <div
-            className="flex justify-start w-min mx-10 mt-8 mb-6 cursor-pointer hover:text-stone-400"
+            className="flex justify-start w-min mx-10 mt-8 mb-6 cursor-pointer
+            hover:text-stone-400"
             onClick={onExit}
           >
             <X />
@@ -27,8 +34,22 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
             <ItemTab href="/">Home</ItemTab>
             <ItemTab href="/dashboard">Dashboard</ItemTab>
             <ItemTab href="/browse/1">Courses</ItemTab>
-            <ItemTab href="/signup">Sign Up</ItemTab>
-            <ItemTab href="/login">Log In</ItemTab>
+
+            {!data.isLoggedIn && (
+              <>
+                <ItemTab href="/signup">Sign Up</ItemTab>
+                <ItemTab href="/login">Log In</ItemTab>
+              </>
+            )}
+
+            {data.isLoggedIn && (
+              <li
+                className="hover:bg-stone-200 w-full pl-10 py-5 ease-in-out transition-all cursor-pointer"
+                onClick={() => dispatch(logout())}
+              >
+                Sign Out
+              </li>
+            )}
           </ul>
         </div>
 

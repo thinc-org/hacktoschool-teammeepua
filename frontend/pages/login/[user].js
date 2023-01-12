@@ -5,7 +5,7 @@ import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer/Footer";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/userSlice";
+import { login } from "../../store/userSlice";
 import axios from "axios";
 
 export default function UserLogin() {
@@ -31,7 +31,7 @@ export default function UserLogin() {
       .post("http://localhost:3100/api/login", message)
       .then((res) => {
         console.log(res);
-        dispatch(setUser(res.data));
+        dispatch(login(res.data));
         router.push("/dashboard");
       })
       .catch((err) => console.log(err));

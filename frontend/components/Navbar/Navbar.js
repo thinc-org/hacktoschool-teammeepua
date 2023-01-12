@@ -1,14 +1,16 @@
 import { useState } from "react";
-
 import { NavbarMenu } from "./NavbarMenu";
 import { NavbarMenuMobile } from "./NavbarMenuMobile";
 import { NavbarLogo } from "./NavbarLogo";
 import { NavbarAuth } from "./NavbarAuth";
 import { NavbarHam } from "./NavbarHam";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { NavbarHaveAuth } from "./NavbarHaveAuth";
 
 export const Navbar = () => {
   const router = useRouter();
+  const { data } = useSelector((state) => state.user);
   const [isShowMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
@@ -27,7 +29,8 @@ export const Navbar = () => {
         />
       </div>
 
-      <NavbarAuth />
+      {!data.isLoggedIn && <NavbarAuth />}
+      {data.isLoggedIn && <NavbarHaveAuth />}
 
       {/* account icon */}
       <div
