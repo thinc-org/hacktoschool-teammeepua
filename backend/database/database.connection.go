@@ -25,7 +25,7 @@ func ConnectDatabase() {
 
 	log.Print("database is connected")
 
-	db.AutoMigrate(&models.User{}, &models.Course{}, &models.Enrollment{}, &models.Student{})
+	db.AutoMigrate(&models.User{}, &models.Course{}, &models.Enrollment{}, &models.Student{}, &models.Instructor{})
 
 	DB = DbInstance{
 		Db: db,
