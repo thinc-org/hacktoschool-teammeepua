@@ -2,6 +2,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { CourseCard } from "../../components/CourseCard";
 import { useSelector } from "react-redux";
 import { ProfilePane } from "../../components/Dashboard/ProfilePane";
+import { Button } from "../../components/Button";
 
 const dummyData = {
   5403213: {
@@ -40,6 +41,18 @@ export default function () {
               </h1>
             </>
           )}
+
+          {data.role === "instructor" && (
+            <div className="mb-6">
+              <h1 className="font-semibold text-2xl mb-2">
+                Here are all the courses you are managing
+              </h1>
+              <button className="rounded-full bg-cyan-700 hover:bg-cyan-900 px-4 text-white text-base font-bold">
+                Create New Course +
+              </button>
+            </div>
+          )}
+
           <CourseList />
         </div>
       </div>
