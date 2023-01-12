@@ -1,12 +1,11 @@
 package controllers
 
 import (
-	"log"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/thamph/thinc-hacktoschool/database"
 	"github.com/thamph/thinc-hacktoschool/models"
+	"log"
+	"net/http"
 )
 
 // create new user only if email doesn't exist in database
@@ -53,4 +52,35 @@ func GetUserById(context *gin.Context) {
 	id := context.Param("id")
 	database.DB.Db.First(&user, id)
 	context.JSON(http.StatusOK, user)
+}
+
+type Data struct {
+	UserID uint `json:"userID"`
+}
+
+func GetUserInfo(context *gin.Context) {
+	var data Data
+	var user models.User
+	if err := context.BindJSON(&data); err != nil {
+		log.Fatal(err)
+	}
+	database.DB.Db.Where("id = ?", data.UserID).First(&user)
+	var listCourse []models.Course
+	if user.Role == "student" {
+		GetStudentEnrollments(user.ID, &listCourse)
+	} else if user.Role == "instructor" {
+		GetInstructorCourses(user.ID, &listCourse)
+	}
+	context.JSON(http.StatusOK, gin.H{
+		"userID":         user.ID,
+		"email":          user.Email,
+		"firstName":      user.FirstName,
+		"lastName":       user.LastName,
+		"displayName":    user.DisplayName,
+		"role":           user.Role,
+		"listCourse":     listCourse,
+		"socialFacebook": user.SocialFacebook,
+		"socialYoutube":  user.SocialYoutube,
+	})
+
 }

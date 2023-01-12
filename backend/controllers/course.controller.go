@@ -33,3 +33,9 @@ func SearchCourse(context *gin.Context) {
 	}
 	context.JSON(http.StatusOK, courses)
 }
+
+func GetInstructorCourses(userID uint, listCourse *[]models.Course) {
+	var instructor models.Instructor
+	database.DB.Db.Where("user_id = ?", userID).First(&instructor)
+	database.DB.Db.Where("instructor_id = ?", instructor.ID).Find(&listCourse)
+}

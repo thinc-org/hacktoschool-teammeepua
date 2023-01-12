@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -25,7 +24,6 @@ func EnrollCourse(context *gin.Context) {
 	}
 	database.DB.Db.Where("user_id = ?", data.UserID).First(&student)
 	database.DB.Db.Where("id = ?", data.CourseID).First(&course)
-	fmt.Println(student.ID, course.ID)
 
 	enrollment.Student = student
 	enrollment.Course = course
@@ -33,4 +31,16 @@ func EnrollCourse(context *gin.Context) {
 	database.DB.Db.Create(&enrollment)
 
 	context.JSON(http.StatusOK, gin.H{"message": "enrollment is successfully"})
+}
+
+func GetStudentEnrollments(userID uint, listCourse *[]models.Course) {
+	var student models.Student
+	var enrollments []models.Enrollment
+	database.DB.Db.Where("user_id = ?", userID).First(&student)
+	database.DB.Db.Where("student_id = ?", student.ID).Find(&enrollments)
+	for i := range enrollments {
+		var course models.Course
+		database.DB.Db.Where("id = ?", enrollments[i].CourseID).First(&course)
+		*listCourse = append(*listCourse, course)
+	}
 }
