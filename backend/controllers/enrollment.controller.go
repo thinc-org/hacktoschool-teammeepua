@@ -30,7 +30,7 @@ func EnrollCourse(context *gin.Context) {
 	enrollment.Student = student
 	enrollment.Course = course
 
-	fmt.Println(student.)
+	fmt.Println(student)
 	fmt.Println()
 	fmt.Println(course)
 	fmt.Println()
