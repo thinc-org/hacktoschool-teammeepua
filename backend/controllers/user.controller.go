@@ -22,6 +22,8 @@ func CreateUser(context *gin.Context) {
 	} else {
 		if user.Role == "student" {
 			CreateStudent(context, &user)
+		} else if user.Role == "instructor" {
+			CreateInstructor(context, &user)
 		}
 	}
 }
