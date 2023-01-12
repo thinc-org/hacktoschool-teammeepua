@@ -1,14 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer/Footer";
 
 export default function UserLogin() {
-  const [radioState, setRadioState] = useState("Student");
+  const [radioState, setRadioState] = useState("student");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onRadioInputChange = (e) => {
     setRadioState(e.target.value);
+  };
+
+  const onSubmitHandler = (e) => {
+    let message = { ...e, displayName: e.firstName, role: radioState };
+
+    axios
+      .post("http://localhost:3100/api/signup", message)
+      .then((res) => console.log(res));
   };
 
   return (
@@ -31,37 +47,65 @@ export default function UserLogin() {
           <span>Return to Log In</span>
         </Link>
 
-        <form className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11">
-          <TextField
+        <form
+          className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11"
+          onSubmit={handleSubmit(onSubmitHandler)}
+        >
+          <InputField
             header="Email"
+            pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i}
             type="text"
             placeholder="something@email.com"
+            name="email"
+            register={register}
+            error={errors}
           />
-          <TextField header="First Name" type="text" placeholder="John" />
-          <TextField header="Last Name" type="text" placeholder="Oliver" />
-          <TextField header="Password" type="password" placeholder="*******" />
+          <InputField
+            header="First Name"
+            type="text"
+            placeholder="John"
+            name="firstName"
+            register={register}
+            error={errors}
+          />
+          <InputField
+            header="Last Name"
+            type="text"
+            placeholder="Oliver"
+            name="lastName"
+            register={register}
+            error={errors}
+          />
+          <InputField
+            header="Password"
+            type="password"
+            placeholder="*******"
+            name="password"
+            register={register}
+            error={errors}
+          />
 
           <label>You are a</label>
           <div className="mt-2 mb-6">
-            <input
-              type="radio"
-              value="Student"
-              onChange={onRadioInputChange}
-              checked={radioState === "Student"}
-              id="Student"
-            />
-            <label htmlFor="Student" className="ml-2 mr-20">
+            <label className="ml-2 mr-20">
+              <input
+                type="radio"
+                value="student"
+                onChange={onRadioInputChange}
+                checked={radioState === "student"}
+                className="mr-2"
+              />
               Student
             </label>
 
-            <input
-              type="radio"
-              onChange={onRadioInputChange}
-              checked={radioState === "Teacher"}
-              value="Teacher"
-              id="Teacher"
-            />
-            <label htmlFor="Teacher" className="ml-2 mr-20">
+            <label className="ml-2 mr-20">
+              <input
+                type="radio"
+                onChange={onRadioInputChange}
+                value="teacher"
+                checked={radioState === "teacher"}
+                className="mr-2"
+              />
               Teacher
             </label>
           </div>
@@ -85,14 +129,22 @@ export default function UserLogin() {
   );
 }
 
-const TextField = (props) => {
+const InputField = (props) => {
   return (
     <div className="mb-8">
       <label className="text-md font-medium mb-2 px-1">{props.header}</label>
       <input
+        {...props.register(props.name, {
+          required: true,
+          pattern: props.pattern,
+        })}
         type={props.type}
         placeholder={props.placeholder}
-        className="border rounded-lg p-2 w-full h-12 placeholder: text-sm placeholder: font-normal placeholder: px-3"
+        className={`
+          border rounded-lg p-2 w-full h-12
+          placeholder: text-sm placeholder: font-normal placeholder: px-3
+          ${props.error[props.name] && "border-red-600 border-2"}
+        `}
       />
     </div>
   );

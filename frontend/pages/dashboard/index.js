@@ -29,7 +29,7 @@ export default function () {
     <>
       <div className="bg-stone-100 w-screen flex flex-row justify-center pt-8">
         <div className="w-[350px] h-max flex flex-col justify-start gap-4">
-          <ProfileBanner name={user.name} />
+          <ProfileBanner name={user.displayName} />
 
           <SubProfile label="Display Name">Alex</SubProfile>
           <SubProfile label="Full Name">Alex Morphy</SubProfile>
