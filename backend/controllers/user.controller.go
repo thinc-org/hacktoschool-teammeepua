@@ -19,6 +19,7 @@ func CreateUser(context *gin.Context) {
 	if userFound.Email == user.Email {
 		context.JSON(http.StatusConflict, gin.H{"message": "Email already exists"})
 	} else {
+		database.DB.Db.Create(&user)
 		if user.Role == "student" {
 			CreateStudent(context, &user)
 		} else if user.Role == "instructor" {
@@ -65,12 +66,17 @@ func GetUserInfo(context *gin.Context) {
 		log.Fatal(err)
 	}
 	database.DB.Db.Where("id = ?", data.UserID).First(&user)
-	var listCourse []models.Course
+	var listCourseRaw []models.Course
 	if user.Role == "student" {
-		GetStudentEnrollments(user.ID, &listCourse)
+		GetStudentEnrollments(user.ID, &listCourseRaw)
 	} else if user.Role == "instructor" {
-		GetInstructorCourses(user.ID, &listCourse)
+		GetInstructorCourses(user.ID, &listCourseRaw)
 	}
+	var listCourse []CourseInfo
+	for i := range listCourseRaw {
+		listCourse = append(listCourse, GetCourseInfo(listCourseRaw[i].ID))
+	}
+
 	context.JSON(http.StatusOK, gin.H{
 		"userID":         user.ID,
 		"email":          user.Email,
@@ -82,5 +88,4 @@ func GetUserInfo(context *gin.Context) {
 		"socialFacebook": user.SocialFacebook,
 		"socialYoutube":  user.SocialYoutube,
 	})
-
 }

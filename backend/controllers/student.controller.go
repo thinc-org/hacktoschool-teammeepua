@@ -10,7 +10,7 @@ import (
 
 func CreateStudent(context *gin.Context, user *models.User) {
 	var student models.Student
-	student.User = *user
+	student.UserID = user.ID
 	database.DB.Db.Create(&student)
 	context.JSON(http.StatusOK, gin.H{"userID": student.UserID})
 }

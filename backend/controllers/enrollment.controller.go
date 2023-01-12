@@ -25,8 +25,8 @@ func EnrollCourse(context *gin.Context) {
 	database.DB.Db.Where("user_id = ?", data.UserID).First(&student)
 	database.DB.Db.Where("id = ?", data.CourseID).First(&course)
 
-	enrollment.Student = student
-	enrollment.Course = course
+	enrollment.StudentID = student.ID
+	enrollment.CourseID = course.ID
 
 	database.DB.Db.Create(&enrollment)
 

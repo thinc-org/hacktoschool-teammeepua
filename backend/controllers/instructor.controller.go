@@ -10,7 +10,7 @@ import (
 
 func CreateInstructor(context *gin.Context, user *models.User) {
 	var instructor models.Instructor
-	instructor.User = *user
+	instructor.UserID = user.ID
 	database.DB.Db.Create(&instructor)
 	context.JSON(http.StatusOK, gin.H{"userID": instructor.UserID})
 }
