@@ -23,18 +23,18 @@ const dummyData = {
 const courses = [5403213, 2110327];
 
 export default function () {
-  const user = useSelector((state) => state.user);
+  const { data } = useSelector((state) => state.user);
 
   return (
     <>
       <div className="bg-stone-100 w-screen flex flex-row justify-center pt-8">
         <div className="w-[350px] h-max flex flex-col justify-start gap-4">
-          <ProfileBanner name={user.displayName} />
+          <ProfileBanner name={data.displayName} />
 
-          <SubProfile label="Display Name">Alex</SubProfile>
-          <SubProfile label="Full Name">Alex Morphy</SubProfile>
-          <SubProfile label="Student ID">123456</SubProfile>
-          <SubProfile label="Email Address">something@email.com</SubProfile>
+          <SubProfile label="Display Name">{data.displayName}</SubProfile>
+          <SubProfile label="Full Name">{`${data.firstName} ${data.lastName}`}</SubProfile>
+          <SubProfile label="Student ID">{data.ID}</SubProfile>
+          <SubProfile label="Email Address">{data.email}</SubProfile>
           <SubProfile label="Social Media Accounts">
             <Link href="" className="underline">
               Facebook

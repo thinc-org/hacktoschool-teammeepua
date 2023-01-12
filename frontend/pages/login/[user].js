@@ -3,15 +3,39 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer/Footer";
-
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/userSlice";
+import axios from "axios";
 
 export default function UserLogin() {
   const router = useRouter();
   const { user } = router.query;
-
   const dispatch = useDispatch();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmitHandler = (e) => {
+    let message = {
+      ...e,
+      role: user,
+    };
+
+    console.log(message);
+
+    axios
+      .post("http://localhost:3100/api/login", message)
+      .then((res) => {
+        console.log(res);
+        dispatch(setUser(res.data));
+        router.push("/dashboard");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -27,35 +51,33 @@ export default function UserLogin() {
             width={16}
             height={16}
           />
-          <span>{user === "student" ? "Teacher" : "Student"} Login</span>
+          <span>{user === "student" ? "Instructor" : "Student"} Login</span>
         </Link>
 
         <form
           className="w-[720px] h-auto text-stone-500 rounded-xl border-white bg-white shadow-xl px-20 py-11"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={handleSubmit(onSubmitHandler)}
         >
-          <TextField
+          <InputField
             header={"Email"}
             type="text"
             placeholder="something@mail.com"
+            name="email"
+            register={register}
+            error={errors}
           />
 
-          <TextField
+          <InputField
             header={"Password"}
             type="password"
             placeholder="*******"
+            name="password"
+            register={register}
+            error={errors}
           />
 
           <div className="flex flex-col gap-3 items-center w-full">
-            <Button
-              value="Log In"
-              onClick={() => {
-                dispatch(setUser("Billy"));
-                router.push("/dashboard");
-              }}
-            />
+            <Button value="Log In" />
 
             <div>
               <NoLoginContainer
@@ -78,14 +100,22 @@ export default function UserLogin() {
   );
 }
 
-const TextField = (props) => {
+const InputField = (props) => {
   return (
-    <div className="m-4">
+    <div className="mb-8">
       <label className="text-md font-medium mb-2 px-1">{props.header}</label>
       <input
+        {...props.register(props.name, {
+          required: true,
+          pattern: props.pattern,
+        })}
         type={props.type}
         placeholder={props.placeholder}
-        className="border rounded-lg p-2 w-full h-12 placeholder: text-sm placeholder: font-normal placeholder: px-3"
+        className={`
+          border rounded-lg p-2 w-full h-12
+          placeholder: text-sm placeholder: font-normal placeholder: px-3
+          ${props.error[props.name] && "border-red-600 border-2"}
+        `}
       />
     </div>
   );

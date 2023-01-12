@@ -9,7 +9,9 @@ export default function (props) {
       </div>
       <div className="ml-4">
         <h1 className="font-semibold text-xl">Welcome back,</h1>
-        <span className="font-bold text-4xl">{props.name}!</span>
+        <span className="font-bold text-4xl overflow-hidden">
+          {props.name}!
+        </span>
       </div>
     </div>
   );

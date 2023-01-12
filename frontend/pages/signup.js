@@ -5,10 +5,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer/Footer";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/userSlice";
 
 export default function UserLogin() {
   const [radioState, setRadioState] = useState("student");
-
+  const dispatch = useDispatch();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,7 +28,11 @@ export default function UserLogin() {
 
     axios
       .post("http://localhost:3100/api/signup", message)
-      .then((res) => console.log(res));
+      .then((res) => {
+        dispatch(setUser(res.data));
+        router.push("/dashboard");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -102,11 +110,11 @@ export default function UserLogin() {
               <input
                 type="radio"
                 onChange={onRadioInputChange}
-                value="teacher"
-                checked={radioState === "teacher"}
+                value="instructor"
+                checked={radioState === "instructor"}
                 className="mr-2"
               />
-              Teacher
+              Instructor
             </label>
           </div>
 
