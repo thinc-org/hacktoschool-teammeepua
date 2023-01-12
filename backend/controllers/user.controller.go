@@ -21,7 +21,9 @@ func CreateUser(context *gin.Context) {
 		context.JSON(http.StatusConflict, gin.H{"message": "Email already exists"})
 	} else {
 		database.DB.Db.Create(&user)
-		context.JSON(http.StatusOK, user)
+		if user.Role == "student" {
+			CreateStudent(context, &user)
+		}
 	}
 }
 
