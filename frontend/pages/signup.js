@@ -6,12 +6,9 @@ import { useForm } from "react-hook-form";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer/Footer";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { login } from "../store/userSlice";
 
 export default function UserLogin() {
   const [radioState, setRadioState] = useState("student");
-  const dispatch = useDispatch();
   const router = useRouter();
   const {
     register,
