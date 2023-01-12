@@ -7,7 +7,7 @@ import { Button } from "../components/Button";
 import { Footer } from "../components/Footer/Footer";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/userSlice";
+import { login } from "../store/userSlice";
 
 export default function UserLogin() {
   const [radioState, setRadioState] = useState("student");
@@ -29,7 +29,7 @@ export default function UserLogin() {
     axios
       .post("http://localhost:3100/api/signup", message)
       .then((res) => {
-        dispatch(setUser(res.data));
+        dispatch(login(res.data));
         router.push("/dashboard");
       })
       .catch((err) => console.log(err));
