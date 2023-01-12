@@ -41,13 +41,11 @@ func GetInstructorCourses(userID uint, listCourse *[]models.Course) {
 }
 
 type CourseInfo struct {
-	CourseID              uint   `json:"courseID""`
-	Title                 string `json:"title"`
-	CoverURL              string `json:"coverURL"`
-	Description           string `json:"description"`
-	InstructorFirstName   string `json:"instructorFirstName"`
-	InstructorLastName    string `json:"instructorLastName"`
-	InstructorDisplayName string `json:"instructorDisplayName"`
+	CourseID           uint   `json:"courseID"`
+	Title              string `json:"title"`
+	CoverURL           string `json:"coverURL"`
+	Description        string `json:"description"`
+	InstructorFullName string `json:"instructorFullName"`
 }
 
 func GetCourseInfo(courseID uint) CourseInfo {
@@ -58,12 +56,10 @@ func GetCourseInfo(courseID uint) CourseInfo {
 	database.DB.Db.Where("id = ?", course.InstructorID).First(&instructor)
 	database.DB.Db.Where("id = ?", instructor.UserID).First(&user)
 	return CourseInfo{
-		CourseID:              courseID,
-		Title:                 course.Title,
-		CoverURL:              course.CoverURL,
-		Description:           course.Description,
-		InstructorFirstName:   user.FirstName,
-		InstructorLastName:    user.LastName,
-		InstructorDisplayName: user.DisplayName,
+		CourseID:           courseID,
+		Title:              course.Title,
+		CoverURL:           course.CoverURL,
+		Description:        course.Description,
+		InstructorFullName: user.FirstName + " " + user.LastName,
 	}
 }
