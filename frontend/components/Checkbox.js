@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Checkbox(props) {
+export const Checkbox = (props) => {
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -31,4 +31,4 @@ export default function Checkbox(props) {
       {props.label}
     </label>
   );
-}
+};

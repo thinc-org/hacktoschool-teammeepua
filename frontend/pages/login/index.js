@@ -52,7 +52,7 @@ const LoginContainer = (props) => {
         />
       </div>
 
-      <Button value={props.name} onClick={() => router.push(props.href)} />
+      <Button onClick={() => router.push(props.href)}>{props.name}</Button>
     </div>
   );
 };

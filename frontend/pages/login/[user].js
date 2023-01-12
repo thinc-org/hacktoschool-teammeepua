@@ -77,7 +77,7 @@ export default function UserLogin() {
           />
 
           <div className="flex flex-col gap-3 items-center w-full">
-            <Button value="Log In" />
+            <Button>Log In</Button>
 
             <div>
               <NoLoginContainer

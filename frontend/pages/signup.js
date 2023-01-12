@@ -119,7 +119,7 @@ export default function UserLogin() {
           </div>
 
           <div className="flex flex-col gap-3 items-center w-full">
-            <Button value="Sign Up" />
+            <Button>Sign Up</Button>
 
             <div>
               <label className="font-medium">

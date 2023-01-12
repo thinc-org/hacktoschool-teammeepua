@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import Checkbox from "../../components/Checkbox";
-import CourseCard from "../../components/CourseCard";
+import { Checkbox } from "../../components/Checkbox";
+import { CourseCard } from "../../components/CourseCard";
 import { Footer } from "../../components/Footer/Footer";
-import PageSelector from "../../components/Pagination/PageSelector";
+import { PageSelector } from "../../components/Pagination/PageSelector";
 
 const dummyData = {
   5403213: {

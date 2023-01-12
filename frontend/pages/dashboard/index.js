@@ -1,5 +1,5 @@
 import { Footer } from "../../components/Footer/Footer";
-import CourseCard from "../../components/CourseCard";
+import { CourseCard } from "../../components/CourseCard";
 import { useSelector } from "react-redux";
 import { ProfilePane } from "../../components/Dashboard/ProfilePane";
 
@@ -33,12 +33,17 @@ export default function () {
         <div className="border-l-2 border-solid border-stone-300" />
 
         <div className="pt-4 px-10">
-          <h1 className="font-semibold text-2xl mb-8">
-            Here are all the courses you are taking
-          </h1>
+          {data.role === "student" && (
+            <>
+              <h1 className="font-semibold text-2xl mb-8">
+                Here are all the courses you are taking
+              </h1>
+            </>
+          )}
           <CourseList />
         </div>
       </div>
+
       <Footer />
     </>
   );

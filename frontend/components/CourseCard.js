@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./Button";
+import { RightArrow } from "../components/SVGIcon/RightArrow";
 
-export default function CourseCard(props) {
+export const CourseCard = (props) => {
   return (
     <div className="w-[860px] h-[310px] bg-white rounded-xl shadow-lg mb-5 overflow-hidden flex flex-row hover:scale-[1.01] transition">
       <div className="relative w-[310px] h-[310px] flex-none">
@@ -32,7 +33,12 @@ export default function CourseCard(props) {
         </div>
 
         <div className="absolute bottom-0 py-4 w-full bg-white">
-          <Button value="Enroll" onClick={props.onEnroll} />
+          <Button onClick={props.onEnroll}>
+            <span className="flex flex-row items-center">
+              Enroll
+              <RightArrow />
+            </span>
+          </Button>
           <Link href="" className="underline font-md text-sm ml-4">
             View Example
           </Link>
@@ -40,4 +46,4 @@ export default function CourseCard(props) {
       </div>
     </div>
   );
-}
+};

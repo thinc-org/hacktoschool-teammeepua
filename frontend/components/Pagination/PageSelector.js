@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import LeftArrow from "../SVGIcon/LeftArrow";
-import RightArrow from "../SVGIcon/RightArrow";
+import { LeftArrow } from "../SVGIcon/LeftArrow";
+import { RightArrow } from "../SVGIcon/RightArrow";
 
-export default function PageSelector({ pageCount, currentPage }) {
+export const PageSelector = ({ pageCount, currentPage }) => {
   const router = useRouter();
 
   let pages = generatePages(pageCount, currentPage, 7);
@@ -46,7 +46,7 @@ export default function PageSelector({ pageCount, currentPage }) {
       </PageButton>
     </div>
   );
-}
+};
 
 const generatePages = (pageCount, currentPage, limit) => {
   let offset = 0;
