@@ -12,4 +12,5 @@ type User struct {
 	Role           string `json:"role"`
 	SocialFacebook string `json:"socialFacebook"`
 	SocialYoutube  string `json:"socialYoutube"`
+	SocialZoom     string `json:"socialZoom"`
 }
