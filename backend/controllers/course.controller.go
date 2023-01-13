@@ -81,11 +81,27 @@ func GetCourseContent(context *gin.Context) {
 func BrowseCourses(context *gin.Context) {
 	searchString := context.Query("search")
 	pageNumber := context.Query("page_number")
+	//declare an array called "filter" from the query "filter"
+	filter := context.QueryArray("filter")
 	if pageNumber == "" {
 		pageNumber = "1"
 	}
 	var courses []models.Course
 	SearchCourse(searchString, &courses)
+	//filter courses by categories
+	if len(filter) > 0 {
+		var filteredCourses []models.Course
+		for _, course := range courses {
+			for _, category := range course.Categories {
+				for _, f := range filter {
+					if category == f {
+						filteredCourses = append(filteredCourses, course)
+					}
+				}
+			}
+		}
+		courses = filteredCourses
+	}
 	totalPages := int(math.Ceil(float64(len(courses)) / 5.0))
 	totalCourses := len(courses)
 	page, err := strconv.Atoi(pageNumber)
