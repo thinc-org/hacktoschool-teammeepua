@@ -32,12 +32,15 @@ export const CourseCard = (props) => {
         </div>
 
         <div className="absolute bottom-0 py-4 w-full bg-white">
-          <Button onClick={props.onEnroll}>
+          <button
+            className="rounded-full bg-cyan-700 hover:bg-cyan-900 px-5 py-2 text-white text-lg font-bold"
+            onClick={() => props.onEnroll()}
+          >
             <span className="flex flex-row items-center">
               Enroll
               <RightArrow />
             </span>
-          </Button>
+          </button>
           <Link href="" className="underline font-md text-sm ml-4">
             View Example
           </Link>

@@ -44,15 +44,21 @@ export default function () {
   const onEnroll = (courseID) => {
     const { data } = auth.checkAuth();
 
-    axios
-      .post("http://localhost:3100/api/enroll", {
-        courseID: courseID,
-        userID: data.ID,
-      })
-      .then((res) => {
-        // GOTO course view
-        console.log(res);
-      });
+    console.log(data);
+
+    if (data.role === "instructor") {
+      router.push("/login");
+    } else {
+      axios
+        .post("http://localhost:3100/api/enroll", {
+          courseID: courseID,
+          userID: data.ID,
+        })
+        .then((res) => {
+          // GOTO course view
+          console.log(res);
+        });
+    }
   };
 
   return (
