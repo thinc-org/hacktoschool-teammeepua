@@ -1,3 +1,4 @@
+import Link from "next/link";
 export const BannerInfo = () => {
   return (
     <div className="flex flex-col justify-center sm:justify-start sm:items-center sm:h-fit">
@@ -13,7 +14,7 @@ export const BannerInfo = () => {
       {/* Change this later */}
       <div>
         <button className="rounded-full bg-cyan-700 hover:bg-cyan-900 px-5 py-2 text-white text-lg xl:text-base font-bold">
-          Browse Course
+          <Link href="/browse/1">Browse Courses</Link>
         </button>
       </div>
     </div>
