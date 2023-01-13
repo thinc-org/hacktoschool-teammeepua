@@ -10,12 +10,23 @@ import (
 )
 
 func CreateCourse(context *gin.Context) {
+	type data struct {
+		UserID      uint   `json:"userID"`
+		CourseTitle string `json:"courseTitle"`
+	}
+	var d data
 	var course models.Course
-	if err := context.BindJSON(&course); err != nil {
+	var instructor models.Instructor
+	if err := context.BindJSON(&d); err != nil {
 		log.Fatal(err)
 	}
+
+	database.DB.Db.Where("user_id = ?", d.UserID).First(&instructor)
+	course.Title = d.CourseTitle
+	course.InstructorID = instructor.ID
+
 	database.DB.Db.Create(&course)
-	context.JSON(http.StatusOK, course)
+	context.JSON(http.StatusOK, gin.H{"courseID": course.ID})
 }
 
 func SearchCourse(context *gin.Context) {
