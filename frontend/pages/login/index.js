@@ -14,7 +14,7 @@ export default function Login() {
           <h3 className="text-lg text-gray-500 font-medium mb-3">Log in as</h3>
 
           <div className="flex flex-col items-center justify-center">
-            <div className="w-screen flex flex-row justify-center">
+            <div className="w-screen pb-[200px] flex flex-row justify-center">
               <LoginContainer
                 src="/../public/instructors.png"
                 name="Course Instructor"

@@ -45,7 +45,7 @@ export default function UserLogin() {
 
   return (
     <>
-      <div className="bg-stone-100 pt-12 pb-8 w-screen h-max flex flex-col items-center">
+      <div className="bg-stone-100 pt-12 pb-8 w-screen h-[100vh] flex flex-col items-center">
         <h1 className="text-3xl font-semibold mb-3">Login to Thinc Academy</h1>
         <Link
           href="/login"
@@ -107,7 +107,7 @@ export default function UserLogin() {
         </form>
       </div>
 
-      <Footer />
+      <Footer fixed={true} />
     </>
   );
 }
