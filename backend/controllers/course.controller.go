@@ -1,11 +1,14 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/thamph/thinc-hacktoschool/database"
 	"github.com/thamph/thinc-hacktoschool/models"
 	"log"
+	"math"
 	"net/http"
+	"strconv"
 )
 
 func CreateCourse(context *gin.Context) {
@@ -56,7 +59,11 @@ func GetCourseContent(context *gin.Context) {
 	var course models.Course
 	var instructor models.Instructor
 	var user models.User
-	database.DB.Db.Where("id = ?", context.Param("courseID")).First(&course)
+	courseID, err := strconv.Atoi(context.Param("courseID"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	database.DB.Db.Where("id = ?", courseID).First(&course)
 	database.DB.Db.Where("id = ?", course.InstructorID).First(&instructor)
 	database.DB.Db.Where("id = ?", instructor.UserID).First(&user)
 	context.JSON(http.StatusOK, gin.H{
@@ -70,20 +77,41 @@ func GetCourseContent(context *gin.Context) {
 	})
 }
 
-func SearchCourse(context *gin.Context) {
+func BrowseCourses(context *gin.Context) {
+	searchString := context.Query("search")
+	pageNumber := context.Query("page_number")
+	if pageNumber == "" {
+		pageNumber = "1"
+	}
 	var courses []models.Course
-	id := context.Param("id")
-	name := context.Param("name")
-	if id != "" {
-		database.DB.Db.Where("id = ?", id).Find(&courses)
+	SearchCourse(searchString, &courses)
+	totalPages := int(math.Ceil(float64(len(courses)) / 5.0))
+	page, err := strconv.Atoi(pageNumber)
+	if err != nil {
+		log.Fatal(err)
 	}
-	if name != "" {
-		database.DB.Db.Where("title LIKE ?", "%"+name+"%").Find(&courses)
+	var listCourses []CourseInfo
+	for i := 0; i < 5 && (page-1)*5+i < len(courses); i++ {
+		listCourses = append(listCourses, GetCourseInfo(courses[(page-1)*5+i].ID))
 	}
-	if id == "" && name == "" {
-		database.DB.Db.Find(&courses)
+	context.JSON(http.StatusOK, gin.H{
+		"totalPages":  totalPages,
+		"listCourses": listCourses,
+	})
+}
+
+func SearchCourse(searchString string, courses *[]models.Course) {
+	if searchString != "" {
+		id, err := strconv.Atoi(searchString)
+		fmt.Println("found", id)
+		if err == nil {
+			database.DB.Db.Where("id = ?", id).Find(courses)
+		} else {
+			database.DB.Db.Where("title LIKE ?", "%"+searchString+"%").Find(courses)
+		}
+	} else if searchString == "" {
+		database.DB.Db.Find(courses)
 	}
-	context.JSON(http.StatusOK, courses)
 }
 
 func GetInstructorCourses(userID uint, listCourse *[]models.Course) {
