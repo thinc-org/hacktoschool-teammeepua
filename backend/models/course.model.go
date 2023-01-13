@@ -8,5 +8,6 @@ type Course struct {
 	CoverURL     string `json:"coverURL"`
 	Description  string `json:"description"`
 	InstructorID uint
+	Instructor   Instructor
 	Content      string
 }
