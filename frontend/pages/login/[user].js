@@ -34,7 +34,6 @@ export default function UserLogin() {
     axios
       .post("http://localhost:3100/api/login", message)
       .then((res) => {
-        console.log(res);
         dispatch(login(res.data));
         router.push("/dashboard");
       })

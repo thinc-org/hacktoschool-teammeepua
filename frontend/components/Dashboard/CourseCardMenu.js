@@ -1,39 +1,32 @@
-import { useSelector } from "react-redux";
 import { Button } from "../Button";
 
-export const CourseCardMenu = ({
-  progress = 0,
+export const CourseCardInstructorMenu = ({
   primaryOnClick,
   secondaryOnClick,
 }) => {
-  const { data } = useSelector((state) => state.user);
-  const role = data.role;
-
   return (
     <div className="absolute bottom-0 py-4 w-full bg-white flex flex-row items-center gap-2">
-      {role === "instructor" && (
-        <>
-          <Button onClick={primaryOnClick}>Edit Content</Button>
-          <button
-            onClick={secondaryOnClick}
-            className="underline font-md text-sm ml-4"
-          >
-            View Students
-          </button>
-        </>
-      )}
+      <Button onClick={primaryOnClick}>Edit Content</Button>
+      <button
+        onClick={secondaryOnClick}
+        className="underline font-md text-sm ml-4"
+      >
+        View Students
+      </button>
+    </div>
+  );
+};
 
-      {role === "student" && (
-        <>
-          <Button onClick={primaryOnClick}>{`Continue (${progress}%)`}</Button>
-          <button
-            onClick={secondaryOnClick}
-            className="underline font-md text-sm ml-4"
-          >
-            Remove from List
-          </button>
-        </>
-      )}
+export const CourseCardStudentMenu = ({ primaryOnClick, secondaryOnClick }) => {
+  return (
+    <div className="absolute bottom-0 py-4 w-full bg-white flex flex-row items-center gap-2">
+      <Button onClick={primaryOnClick}>Continue</Button>
+      <button
+        onClick={secondaryOnClick}
+        className="underline font-md text-sm ml-4"
+      >
+        Remove from List
+      </button>
     </div>
   );
 };

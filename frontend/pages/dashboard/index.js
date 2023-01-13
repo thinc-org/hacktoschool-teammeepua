@@ -7,6 +7,7 @@ import { Modal } from "../../components/Modal/Modal";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
+import { CourseStudent } from "../../components/Dashboard/CourseStudent";
 import axios from "axios";
 
 const dummyData = {
@@ -29,7 +30,7 @@ const courses = [5403213, 2110327];
 
 export default function () {
   const { data } = useSelector((state) => state.user);
-  const [courseIndex, setCourseIndex] = useState(5403213);
+  const [courseIndex, setCourseIndex] = useState(-1);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -45,9 +46,10 @@ export default function () {
       ) {
         axios
           .post("http://localhost:3100/api/userinfo", {
-            userID: session.ID,
+            userID: parseInt(session.ID),
           })
           .then((res) => {
+            console.log(res.data);
             dispatch(login({ ...res.data, ID: session.ID }));
             router.push("/dashboard");
           })
@@ -62,6 +64,13 @@ export default function () {
         <Modal onClick={() => router.push("/login")}>
           Please login to continue
         </Modal>
+      )}
+
+      {courseIndex > 0 && (
+        <CourseStudent
+          {...dummyData[courseIndex]}
+          onCloseCourseStudent={() => setCourseIndex(-1)}
+        />
       )}
 
       <div className="bg-stone-100 w-screen flex flex-row justify-center pt-8">
@@ -90,7 +99,16 @@ export default function () {
             </div>
           )}
 
-          <CourseList />
+          <div className="flex flex-col items-end">
+            {courses.map((i) => (
+              <CourseCard
+                {...dummyData[i]}
+                id={i}
+                key={i}
+                onShowCourseStudent={() => setCourseIndex(i)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -98,13 +116,3 @@ export default function () {
     </>
   );
 }
-
-const CourseList = () => {
-  return (
-    <div className="flex flex-col items-end">
-      {courses.map((i) => (
-        <CourseCard {...dummyData[i]} id={i} key={i} />
-      ))}
-    </div>
-  );
-};
