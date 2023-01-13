@@ -4,8 +4,8 @@ import "gorm.io/gorm"
 
 type Enrollment struct {
 	gorm.Model
-	StudentID uint
+	StudentID uint `json:"studentID"`
 	Student   Student
-	CourseID  uint
+	CourseID  uint `json:"courseID"`
 	Course    Course
 }

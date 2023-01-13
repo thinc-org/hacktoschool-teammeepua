@@ -29,6 +29,30 @@ func CreateCourse(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{"courseID": course.ID})
 }
 
+func EditCourseContent(context *gin.Context) {
+	type data struct {
+		CourseID    uint     `json:"courseID"`
+		Title       string   `json:"title"`
+		Description string   `json:"description"`
+		CoverURL    string   `json:"coverURL"`
+		Content     string   `json:"content"`
+		Categories  []string `json:"categories"`
+	}
+	var d data
+	var course models.Course
+	if err := context.BindJSON(&d); err != nil {
+		log.Fatal(err)
+	}
+	database.DB.Db.Where("id = ?", d.CourseID).First(&course)
+	course.Title = d.Title
+	course.Description = d.Description
+	course.CoverURL = d.CoverURL
+	course.Content = d.Content
+	course.Categories = d.Categories
+	database.DB.Db.Save(&course)
+	context.JSON(http.StatusOK, course)
+}
+
 func SearchCourse(context *gin.Context) {
 	var courses []models.Course
 	id := context.Param("id")

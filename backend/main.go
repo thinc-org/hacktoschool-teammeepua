@@ -23,6 +23,7 @@ func main() {
 	router.POST("/api/login", controllers.CheckLogin)
 	router.POST("/api/enroll", controllers.EnrollCourse)
 	router.POST("/api/userinfo", controllers.GetUserInfo)
+	router.PATCH("/api/course_content/:courseID", controllers.EditCourseContent)
 
 	router.Run(":3100")
 

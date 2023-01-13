@@ -1,13 +1,17 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"github.com/lib/pq"
+	"gorm.io/gorm"
+)
 
 type Course struct {
 	gorm.Model
 	Title        string `json:"title"`
 	CoverURL     string `json:"coverURL"`
 	Description  string `json:"description"`
-	InstructorID uint
+	InstructorID uint   `json:"instructorID"`
 	Instructor   Instructor
-	Content      string
+	Content      string         `json:"content"`
+	Categories   pq.StringArray `json:"categories" gorm:"type:text[]"`
 }

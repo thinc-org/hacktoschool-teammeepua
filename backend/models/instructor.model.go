@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type Instructor struct {
 	gorm.Model
-	UserID uint
+	UserID uint `json:"userID"`
 	User   User
 }
