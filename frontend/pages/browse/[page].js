@@ -133,7 +133,7 @@ const CourseList = (props) => {
               <CourseCard
                 {...i}
                 key={i.courseID}
-                onEnroll={props.onEnroll(i.courseID)}
+                onEnroll={() => props.onEnroll(i.courseID)}
               />
             ))}
         </>
