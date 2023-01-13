@@ -121,11 +121,12 @@ func GetInstructorCourses(userID uint, listCourse *[]models.Course) {
 }
 
 type CourseInfo struct {
-	CourseID           uint   `json:"courseID"`
-	Title              string `json:"title"`
-	CoverURL           string `json:"coverURL"`
-	Description        string `json:"description"`
-	InstructorFullName string `json:"instructorFullName"`
+	CourseID           uint     `json:"courseID"`
+	Title              string   `json:"title"`
+	CoverURL           string   `json:"coverURL"`
+	Description        string   `json:"description"`
+	Categories         []string `json:"categories"`
+	InstructorFullName string   `json:"instructorFullName"`
 }
 
 func GetCourseInfo(courseID uint) CourseInfo {
@@ -140,6 +141,7 @@ func GetCourseInfo(courseID uint) CourseInfo {
 		Title:              course.Title,
 		CoverURL:           course.CoverURL,
 		Description:        course.Description,
+		Categories:         course.Categories,
 		InstructorFullName: user.FirstName + " " + user.LastName,
 	}
 }
