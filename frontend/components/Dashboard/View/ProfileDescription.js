@@ -20,6 +20,9 @@ export const ProfileDescription = ({ data, onEditProfile }) => {
           {data.socialYoutube !== "" && (
             <SubProfileLink href={data.socialYoutube} label="Youtube" />
           )}
+          {data.socialZoom !== "" && (
+            <SubProfileLink href={data.socialZoom} label="Zoom" />
+          )}
         </div>
       </SubProfile>
 

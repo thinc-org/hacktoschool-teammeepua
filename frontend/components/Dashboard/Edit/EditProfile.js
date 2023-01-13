@@ -12,10 +12,19 @@ export const EditProfile = ({ data, onSaveProfile }) => {
   } = useForm();
 
   const onSubmitHandler = (e) => {
-    // save profile
-    console.log(e);
+    let [firstName, lastName] = e.fullName.split(" ");
 
-    onSaveProfile();
+    let message = {
+      ...e,
+      email: data.email,
+      userID: data.ID,
+      firstName: firstName,
+      lastName: lastName,
+    };
+
+    axios.patch("http://localhost:3100/api/userinfo", message).then((res) => {
+      onSaveProfile();
+    });
   };
 
   return (
@@ -27,7 +36,7 @@ export const EditProfile = ({ data, onSaveProfile }) => {
         header="Display Name"
         type="text"
         placeholder={data.displayName}
-        name="email"
+        name="displayName"
         register={register}
         error={errors}
       />
@@ -41,7 +50,6 @@ export const EditProfile = ({ data, onSaveProfile }) => {
         error={errors}
       />
 
-      <SubProfile label="Full Name">{`${data.firstName} ${data.lastName}`}</SubProfile>
       <SubProfile label="Student ID">{data.ID}</SubProfile>
       <SubProfile label="Email Address">{data.email}</SubProfile>
 
@@ -49,7 +57,7 @@ export const EditProfile = ({ data, onSaveProfile }) => {
         <EditSubProfileLink
           header="Facebook"
           type="text"
-          name="socialFacebook"
+          name="socialFacbook"
           placeholder={data.socialFacebook}
           register={register}
           error={errors}
@@ -59,8 +67,17 @@ export const EditProfile = ({ data, onSaveProfile }) => {
           header="Youtube"
           type="text"
           name="socialYoutube"
-          register={register}
           placeholder={data.socialYoutube}
+          register={register}
+          error={errors}
+        />
+
+        <EditSubProfileLink
+          header="Zoom"
+          type="text"
+          name="socialZoom"
+          placeholder={data.socialZoom}
+          register={register}
           error={errors}
         />
       </SubProfile>

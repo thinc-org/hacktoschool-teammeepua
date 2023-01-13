@@ -32,7 +32,7 @@ export const CourseCard = (props) => {
         </div>
 
         <div className="absolute bottom-0 py-4 w-full bg-white">
-          <Button onClick={props.onEnroll}>
+          <Button onClick={() => props.onEnroll()}>
             <span className="flex flex-row items-center">
               Enroll
               <RightArrow />
