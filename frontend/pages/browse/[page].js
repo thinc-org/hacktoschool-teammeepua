@@ -56,6 +56,7 @@ export default function () {
         })
         .then((res) => {
           // GOTO course view
+          router.push(`/course/${courseID}/view`);
           console.log(res);
         });
     }

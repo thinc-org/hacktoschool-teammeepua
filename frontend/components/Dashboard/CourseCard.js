@@ -37,7 +37,13 @@ export const CourseCard = (props) => {
           {props.description}
         </div>
 
-        {data.role === "student" && <CourseCardStudentMenu />}
+        {data.role === "student" && (
+          <CourseCardStudentMenu
+            primaryOnClick={() => {
+              router.push(`/course/${props.courseID}/view`);
+            }}
+          />
+        )}
         {data.role === "instructor" && (
           <CourseCardInstructorMenu
             primaryOnClick={() => router.push(`/course/${props.courseID}/edit`)}
