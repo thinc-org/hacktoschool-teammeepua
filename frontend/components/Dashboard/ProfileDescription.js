@@ -1,13 +1,11 @@
-import { ProfileBanner } from "./ProfileBanner";
+import { EditSubProfile } from "./EditSubProfile";
 import { SubProfile } from "./SubProfile";
-import { SubProfileLink } from "./SubProfileLink";
+import { EditSubProfileLink } from "./EditSubProfileLink";
+import { useForm } from "react-hook-form";
 
-export const ProfilePane = ({ data }) => {
-  console.log(data);
+export const ProfileDescription = ({ data, onEditProfile }) => {
   return (
-    <div className="w-[350px] h-max flex flex-col justify-start gap-4">
-      <ProfileBanner name={data.displayName} />
-
+    <div className="flex flex-col justify-start gap-4">
       <SubProfile label="Display Name">{data.displayName}</SubProfile>
       <SubProfile label="Full Name">{`${data.firstName} ${data.lastName}`}</SubProfile>
       <SubProfile label="Student ID">{data.ID}</SubProfile>
@@ -23,7 +21,10 @@ export const ProfilePane = ({ data }) => {
         </div>
       </SubProfile>
 
-      <button className="w-fit rounded-full bg-[#c3dce3] hover:bg-[#a8d8e5] px-5 py-2 text-cyan-700 text-sm font-bold">
+      <button
+        className="w-fit rounded-full bg-[#c3dce3] hover:bg-[#a8d8e5] px-5 py-2 text-cyan-700 text-sm font-bold"
+        onClick={onEditProfile}
+      >
         Edit Profile
       </button>
     </div>
