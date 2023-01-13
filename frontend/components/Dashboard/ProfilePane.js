@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { EditProfile } from "./Edit/EditProfile";
 import { ProfileBanner } from "./ProfileBanner";
-import { SubProfile } from "./SubProfile";
-import { SubProfileLink } from "./SubProfileLink";
-import { ProfileDescription } from "./ProfileDescription";
+import { ProfileDescription } from "./View/ProfileDescription";
 
 export const ProfilePane = ({ data }) => {
   const [isEditProfile, setEditProfile] = useState(false);

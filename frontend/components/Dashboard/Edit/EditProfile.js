@@ -1,5 +1,5 @@
 import { EditSubProfile } from "./EditSubProfile";
-import { SubProfile } from "../SubProfile";
+import { SubProfile } from "../View/SubProfile";
 import { EditSubProfileLink } from "./EditSubProfileLink";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -49,7 +49,8 @@ export const EditProfile = ({ data, onSaveProfile }) => {
         <EditSubProfileLink
           header="Facebook"
           type="text"
-          name="socialFacbook"
+          name="socialFacebook"
+          placeholder={data.socialFacebook}
           register={register}
           error={errors}
         />
@@ -59,6 +60,7 @@ export const EditProfile = ({ data, onSaveProfile }) => {
           type="text"
           name="socialYoutube"
           register={register}
+          placeholder={data.socialYoutube}
           error={errors}
         />
       </SubProfile>

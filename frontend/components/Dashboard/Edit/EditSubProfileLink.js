@@ -6,6 +6,7 @@ export const EditSubProfileLink = (props) => {
         {...props.register(props.name)}
         type={props.type}
         placeholder={props.placeholder}
+        defaultValue={props.placeholder}
         className={`
           border rounded-lg w-[300px] h-12
           placeholder: text-sm placeholder: font-normal placeholder: px-3

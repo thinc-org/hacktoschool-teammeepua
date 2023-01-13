@@ -1,7 +1,6 @@
-import { EditSubProfile } from "./EditSubProfile";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import { SubProfile } from "./SubProfile";
-import { EditSubProfileLink } from "./EditSubProfileLink";
-import { useForm } from "react-hook-form";
+import { SubProfileLink } from "./SubProfileLink";
 
 export const ProfileDescription = ({ data, onEditProfile }) => {
   return (
@@ -12,11 +11,12 @@ export const ProfileDescription = ({ data, onEditProfile }) => {
       <SubProfile label="Email Address">{data.email}</SubProfile>
       <SubProfile label="Social Media Accounts">
         <div className="flex flex-col text-stone-500">
+          {console.log(data)}
           {data.socialFacebook !== "" && (
-            <SubProfileLink href="http://www.facebook.com" label="Facebook" />
+            <SubProfileLink href={data.socialFacebook} label="Facebook" />
           )}
-          {data.socialFacebook !== "" && (
-            <SubProfileLink href="http://www.youtube.com" label="Youtube" />
+          {data.socialYoutube !== "" && (
+            <SubProfileLink href={data.socialYoutube} label="Youtube" />
           )}
         </div>
       </SubProfile>
