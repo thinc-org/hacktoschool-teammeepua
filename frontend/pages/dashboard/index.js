@@ -1,8 +1,7 @@
 import { Footer } from "../../components/Footer/Footer";
-import { CourseCard } from "../../components/CourseCard";
+import { CourseCard } from "../../components/Dashboard/CourseCard";
 import { useSelector } from "react-redux";
 import { ProfilePane } from "../../components/Dashboard/ProfilePane";
-import { Button } from "../../components/Button";
 
 const dummyData = {
   5403213: {

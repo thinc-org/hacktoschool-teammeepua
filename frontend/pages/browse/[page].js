@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { Checkbox } from "../../components/Checkbox";
-import { CourseCard } from "../../components/CourseCard";
+import { CourseCard } from "../../components/Browse/BrowseCourseCard";
 import { Footer } from "../../components/Footer/Footer";
 import { PageSelector } from "../../components/Pagination/PageSelector";
 

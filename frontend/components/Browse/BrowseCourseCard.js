@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./Button";
-import { RightArrow } from "../components/SVGIcon/RightArrow";
+import { Button } from "../Button";
+import { RightArrow } from "../SVGIcon/RightArrow";
 
 export const CourseCard = (props) => {
   return (
