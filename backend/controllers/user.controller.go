@@ -92,5 +92,6 @@ func GetUserInfo(context *gin.Context) {
 		"listCourse":     listCourse,
 		"socialFacebook": user.SocialFacebook,
 		"socialYoutube":  user.SocialYoutube,
+		"socialZoom":     user.SocialZoom,
 	})
 }
