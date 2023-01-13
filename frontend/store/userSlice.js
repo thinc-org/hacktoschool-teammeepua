@@ -1,4 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useRouter } from "next/router";
+
+const createSession = (data) => {
+  let expired = new Date();
+  expired.setHours(expired.getHours() + 6);
+
+  let session = {
+    ID: data.ID,
+    expired: expired.toISOString(),
+  };
+
+  localStorage.setItem("session", JSON.stringify(session));
+
+  console.log(`Session created for ID:${data.ID}`);
+};
+
+const clearSession = () => {
+  localStorage.removeItem("session");
+
+  console.log("Session cleared");
+};
 
 const initialState = {
   data: {
@@ -19,9 +40,13 @@ const userSlice = createSlice({
     login(state, { payload }) {
       state.data = payload;
       state.data.isLoggedIn = true;
+
+      createSession(state.data);
     },
     logout(state) {
       state.data.isLoggedIn = false;
+
+      clearSession();
     },
   },
 });

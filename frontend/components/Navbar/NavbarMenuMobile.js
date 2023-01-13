@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/userSlice";
 
 export const NavbarMenuMobile = ({ visible, onExit }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.user);
 
@@ -44,7 +45,10 @@ export const NavbarMenuMobile = ({ visible, onExit }) => {
             {data.isLoggedIn && (
               <li
                 className="hover:bg-stone-200 w-full pl-10 py-5 ease-in-out transition-all cursor-pointer"
-                onClick={() => dispatch(logout())}
+                onClick={() => {
+                  router.push("/");
+                  dispatch(logout());
+                }}
               >
                 Sign Out
               </li>

@@ -2,6 +2,12 @@ import { Footer } from "../../components/Footer/Footer";
 import { CourseCard } from "../../components/Dashboard/CourseCard";
 import { useSelector } from "react-redux";
 import { ProfilePane } from "../../components/Dashboard/ProfilePane";
+import { useEffect, useState } from "react";
+import { Modal } from "../../components/Modal/Modal";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/userSlice";
+import axios from "axios";
 
 const dummyData = {
   5403213: {
@@ -23,9 +29,41 @@ const courses = [5403213, 2110327];
 
 export default function () {
   const { data } = useSelector((state) => state.user);
+  const [courseIndex, setCourseIndex] = useState(5403213);
+
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!data.isLoggedIn) {
+      let session = JSON.parse(localStorage.getItem("session"));
+
+      if (
+        session !== null &&
+        session.ID !== undefined &&
+        new Date(session.expired) > new Date()
+      ) {
+        axios
+          .post("http://localhost:3100/api/userinfo", {
+            userID: session.ID,
+          })
+          .then((res) => {
+            dispatch(login({ ...res.data, ID: session.ID }));
+            router.push("/dashboard");
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  }, []);
 
   return (
     <>
+      {!data.isLoggedIn && (
+        <Modal onClick={() => router.push("/login")}>
+          Please login to continue
+        </Modal>
+      )}
+
       <div className="bg-stone-100 w-screen flex flex-row justify-center pt-8">
         <ProfilePane data={data} />
 

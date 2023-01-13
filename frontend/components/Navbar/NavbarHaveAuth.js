@@ -18,8 +18,8 @@ export const NavbarHaveAuth = () => {
       <button
         className="text-base font-bold"
         onClick={() => {
-          dispatch(logout());
           router.push("/");
+          dispatch(logout());
         }}
       >
         <span className="flex flex-row hover:translate-x-1 transition-all">
