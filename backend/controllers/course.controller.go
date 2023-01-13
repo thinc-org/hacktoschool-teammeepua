@@ -1,12 +1,11 @@
 package controllers
 
 import (
-	"log"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/thamph/thinc-hacktoschool/database"
 	"github.com/thamph/thinc-hacktoschool/models"
+	"log"
+	"net/http"
 )
 
 func CreateCourse(context *gin.Context) {
@@ -51,6 +50,24 @@ func EditCourseContent(context *gin.Context) {
 	course.Categories = d.Categories
 	database.DB.Db.Save(&course)
 	context.JSON(http.StatusOK, course)
+}
+
+func GetCourseContent(context *gin.Context) {
+	var course models.Course
+	var instructor models.Instructor
+	var user models.User
+	database.DB.Db.Where("id = ?", context.Param("courseID")).First(&course)
+	database.DB.Db.Where("id = ?", course.InstructorID).First(&instructor)
+	database.DB.Db.Where("id = ?", instructor.UserID).First(&user)
+	context.JSON(http.StatusOK, gin.H{
+		"courseID":           course.ID,
+		"title":              course.Title,
+		"description":        course.Description,
+		"coverURL":           course.CoverURL,
+		"content":            course.Content,
+		"categories":         course.Categories,
+		"instructorFullName": user.FirstName + " " + user.LastName,
+	})
 }
 
 func SearchCourse(context *gin.Context) {
