@@ -95,3 +95,31 @@ func GetUserInfo(context *gin.Context) {
 		"socialZoom":     user.SocialZoom,
 	})
 }
+
+func EditUserInfo(context *gin.Context) {
+	type data struct {
+		UserID         uint   `json:"userID"`
+		Email          string `json:"email"`
+		FirstName      string `json:"firstName"`
+		LastName       string `json:"lastName"`
+		DisplayName    string `json:"displayName"`
+		SocialFacebook string `json:"socialFacebook"`
+		SocialYoutube  string `json:"socialYoutube"`
+		SocialZoom     string `json:"socialZoom"`
+	}
+	var d data
+	if err := context.BindJSON(&d); err != nil {
+		log.Fatal(err)
+	}
+	var user models.User
+	database.DB.Db.Where("id = ?", d.UserID).First(&user)
+	user.Email = d.Email
+	user.FirstName = d.FirstName
+	user.LastName = d.LastName
+	user.DisplayName = d.DisplayName
+	user.SocialFacebook = d.SocialFacebook
+	user.SocialYoutube = d.SocialYoutube
+	user.SocialZoom = d.SocialZoom
+	database.DB.Db.Save(&user)
+	context.JSON(http.StatusOK, user)
+}

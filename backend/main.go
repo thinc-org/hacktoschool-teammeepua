@@ -26,6 +26,7 @@ func main() {
 	router.PATCH("/api/course_content/:courseID", controllers.EditCourseContent)
 	router.GET("/api/course_content/:courseID", controllers.GetCourseContent)
 	router.GET("/api/get_student_list/:courseID", controllers.GetStudentEnrollmentsFromCourse)
+	router.PATCH("/api/userinfo", controllers.EditUserInfo)
 
 	router.Run(":3100")
 
