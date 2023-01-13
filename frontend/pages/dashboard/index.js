@@ -32,14 +32,13 @@ export default function () {
             userID: parseInt(session.ID),
           })
           .then((res) => {
-            console.log(res.data);
             dispatch(login({ ...res.data, ID: session.ID }));
             router.push("/dashboard");
           })
           .catch((err) => console.log(err));
       }
     }
-  }, []);
+  }, [router]);
 
   return (
     <>
@@ -93,13 +92,14 @@ export default function () {
           )}
 
           <div className="flex flex-col items-end">
-            {data.listCourse === undefined && (
+            {(data.listCourse === undefined || data.listCourse === null) && (
               <div className="w-[682px] h-[310px] text-black text-xl font-semibold flex items-center justify-center">
                 No courses found!
               </div>
             )}
 
             {data.listCourse !== undefined &&
+              data.listCourse !== null &&
               data.listCourse.map((i, j) => (
                 <CourseCard
                   {...i}

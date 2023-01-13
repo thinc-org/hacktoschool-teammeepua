@@ -3,6 +3,7 @@ import { SubProfile } from "../View/SubProfile";
 import { EditSubProfileLink } from "./EditSubProfileLink";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export const EditProfile = ({ data, onSaveProfile }) => {
   const {
@@ -10,6 +11,8 @@ export const EditProfile = ({ data, onSaveProfile }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const router = useRouter();
 
   const onSubmitHandler = (e) => {
     let [firstName, lastName] = e.fullName.split(" ");
@@ -24,6 +27,7 @@ export const EditProfile = ({ data, onSaveProfile }) => {
 
     axios.patch("http://localhost:3100/api/userinfo", message).then((res) => {
       onSaveProfile();
+      router.push("/dashboard");
     });
   };
 
