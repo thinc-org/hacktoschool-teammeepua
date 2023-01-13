@@ -2,13 +2,14 @@ package controllers
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/thamph/thinc-hacktoschool/database"
-	"github.com/thamph/thinc-hacktoschool/models"
 	"log"
 	"math"
 	"net/http"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/thamph/thinc-hacktoschool/database"
+	"github.com/thamph/thinc-hacktoschool/models"
 )
 
 func CreateCourse(context *gin.Context) {
@@ -86,6 +87,7 @@ func BrowseCourses(context *gin.Context) {
 	var courses []models.Course
 	SearchCourse(searchString, &courses)
 	totalPages := int(math.Ceil(float64(len(courses)) / 5.0))
+	totalCourses := len(courses)
 	page, err := strconv.Atoi(pageNumber)
 	if err != nil {
 		log.Fatal(err)
@@ -97,6 +99,7 @@ func BrowseCourses(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{
 		"totalPages":  totalPages,
 		"listCourses": listCourses,
+		"totalCourse": totalCourses,
 	})
 }
 
