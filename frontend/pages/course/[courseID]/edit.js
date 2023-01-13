@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-export default function () {
+import TextEditor from "../../../components/TextEditor";
+
+export default function App() {
   const [courseData, setCourseData] = useState();
   const {
     register,
@@ -137,8 +139,9 @@ export default function () {
               })}
             />
           </div>
-
-          {/* text editor here */}
+          <div className="w-full ">
+            <TextEditor />
+          </div>
 
           <div className="my-12">
             <Button>Save Changes</Button>
