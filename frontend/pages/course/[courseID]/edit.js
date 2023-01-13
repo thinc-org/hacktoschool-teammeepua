@@ -1,10 +1,9 @@
 import { Button } from "../../../components/Button";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-import TextEditor from "../../../components/TextEditor";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function App() {
   const [courseData, setCourseData] = useState();
@@ -12,6 +11,13 @@ export default function App() {
 
   const router = useRouter();
   const { courseID } = router.query;
+
+  const editorRef = useRef(null);
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
 
   useEffect(() => {
     if (router.isReady) {
@@ -34,12 +40,12 @@ export default function App() {
     for (let i in e.categories) {
       if (e.categories[i] === true) categories.push(i);
     }
-
+    console.log(editorRef.current.getContent())
     let message = {
       ...e,
       categories: categories,
       courseID: courseData.courseID,
-      content: "",
+      content: editorRef.current.getContent(),
     };
 
     axios
@@ -161,7 +167,41 @@ export default function App() {
             />
           </div>
           <div className="w-full ">
-            <TextEditor />
+            <Editor
+              apiKey="tyd90e7cd7pitroji54zc5y2g2wm4w6ng3v5pjvz2in0ur87"
+              onInit={(evt, editor) => (editorRef.current = editor)}
+              initialValue={courseData.content}
+              init={{
+                selector: "textarea#basic-example",
+                height: 500,
+                plugins: [
+                  "advlist",
+                  "autolink",
+                  "lists",
+                  "link",
+                  "image",
+                  "charmap",
+                  "preview",
+                  "anchor",
+                  "searchreplace",
+                  "visualblocks",
+                  "code",
+                  "fullscreen",
+                  "insertdatetime",
+                  "media",
+                  "table",
+                  "help",
+                  "wordcount",
+                ],
+                toolbar:
+                  "undo redo | blocks | " +
+                  "bold italic backcolor | alignleft aligncenter " +
+                  "alignright alignjustify | bullist numlist outdent indent | " +
+                  "removeformat | help",
+                content_style:
+                  "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
+              }}
+            />
           </div>
 
           <div className="my-12">
