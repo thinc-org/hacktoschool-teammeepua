@@ -23,9 +23,8 @@ export const CourseCard = (props) => {
           <span className="font-semibold">{props.instructorFullName}</span>
         </div>
         <div className="text-stone-400 font-medium text-xs relative flex flex-row gap-3 mb-3">
-          {props.categories.map((e) => (
-            <span key={e}>{e}</span>
-          ))}
+          {props.categories !== null &&
+            props.categories.map((e) => <span key={e}>{e}</span>)}
         </div>
 
         <div className="mb-3 h-[96px] overflow-hidden text-ellipsis">

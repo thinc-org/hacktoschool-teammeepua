@@ -29,7 +29,9 @@ export default function () {
     return courseData.categories.includes(label);
   };
 
-  const onSubmitHandler = (e) => {};
+  const onSubmitHandler = (e) => {
+    console.log(e);
+  };
 
   console.log(courseData);
 
@@ -58,7 +60,7 @@ export default function () {
               className="border border-stone-300 text-sm rounded-lg block w-full p-2.5"
               placeholder="Enter your course name..."
               defaultValue={courseData.title}
-              {...props.register("title", {
+              {...register("title", {
                 required: true,
               })}
             />
@@ -78,13 +80,15 @@ export default function () {
               className="border border-stone-300 text-sm rounded-lg block w-full px-2.5 pt-2.5 pb-10"
               placeholder="Enter your course description..."
               defaultValue={courseData.description}
-              required
+              {...register("description", {
+                required: true,
+              })}
             ></textarea>
           </div>
 
           <p className="my-3 text-stone-500">Course Categories</p>
           <div className="flex items-center justify-between mb-4 w-1/2">
-            <div className="flex items-center">
+            <div>
               <label className="ml-2 text-sm font-medium text-gray-900 ">
                 <input
                   type="checkbox"
@@ -128,7 +132,9 @@ export default function () {
               className="border border-stone-300 text-sm rounded-lg block w-full p-2.5"
               placeholder="Ex. https://yourcourseimage.com/..."
               defaultValue={courseData.coverURL}
-              required
+              {...register("coverURL", {
+                required: true,
+              })}
             />
           </div>
 
