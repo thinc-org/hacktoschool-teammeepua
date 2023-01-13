@@ -4,15 +4,18 @@ import { EditSubProfileLink } from "./EditSubProfileLink";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-export const EditProfile = ({ data }) => {
+export const EditProfile = ({ data, onSaveProfile }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler = (e) => {
     // save profile
+    console.log(e);
+
+    onSaveProfile();
   };
 
   return (

@@ -13,7 +13,7 @@ export const ProfilePane = ({ data }) => {
       <ProfileBanner name={data.displayName} />
 
       {isEditProfile && (
-        <EditProfile data={data} onSave={() => setEditProfile(false)} />
+        <EditProfile data={data} onSaveProfile={() => setEditProfile(false)} />
       )}
 
       {!isEditProfile && (
