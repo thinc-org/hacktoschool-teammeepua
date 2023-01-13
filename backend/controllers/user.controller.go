@@ -1,11 +1,12 @@
 package controllers
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/thamph/thinc-hacktoschool/database"
 	"github.com/thamph/thinc-hacktoschool/models"
-	"log"
-	"net/http"
 )
 
 // create new user only if email doesn't exist in database
@@ -35,10 +36,14 @@ func CheckLogin(context *gin.Context) {
 	}
 	var userFound models.User
 	database.DB.Db.Where("email = ?", user.Email).First(&userFound)
-	if userFound.Email == user.Email && userFound.Password == user.Password {
-		context.JSON(http.StatusOK, userFound)
+	if userFound.Role == user.Role {
+		if userFound.Email == user.Email && userFound.Password == user.Password {
+			context.JSON(http.StatusOK, userFound)
+		} else {
+			context.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid email or password"})
+		}
 	} else {
-		context.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid email or password"})
+		context.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid user type"})
 	}
 }
 
