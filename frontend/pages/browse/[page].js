@@ -3,28 +3,57 @@ import { Checkbox } from "../../components/Checkbox";
 import { CourseCard } from "../../components/Browse/BrowseCourseCard";
 import { Footer } from "../../components/Footer/Footer";
 import { PageSelector } from "../../components/Pagination/PageSelector";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../components/Auth/auth-hook";
 
-const dummyData = {
-  5403213: {
-    name: "Abstract Data Structure and Algorithm (DSA)",
-    instructor: "Dr. Chris Dixon",
-    tags: ["Technology", "Computer Science", "Data Science"],
-    description:
-      "Practice your English and learn new things with the platform. Make learning words more fun with mini-games. Some more random text here would be fine.",
-  },
-  2110327: {
-    name: "Algorithm Design",
-    instructor: "Nattee Niparnan",
-    tags: ["Computer Science"],
-    description: "An algorithm course.",
-  },
-};
-
-const courses = [5403213, 2110327];
-
-export default function Browse() {
+export default function () {
   const router = useRouter();
   const { page } = router.query;
+
+  const [isLoaded, setLoaded] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const [totalPage, setTotalPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [totalCourse, setTotalCourse] = useState(0);
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (router.isReady) {
+      axios
+        .get(
+          `http://localhost:3100/api/browse_course?page_number=${page}&search=${search}`
+        )
+        .then((res) => {
+          console.log(res.data);
+
+          setCourses(res.data.listCourses);
+          setTotalPage(res.data.totalPages);
+          setTotalCourse(res.data.totalCourse);
+          setLoaded(true);
+        });
+    }
+  }, [router, search]);
+
+  const onChangeHandler = (e) => {
+    e.preventDefault();
+    let s = e.target.value;
+    if (s !== undefined) setSearch(s);
+  };
+
+  const onEnroll = (courseID) => {
+    const { data } = auth.checkAuth();
+
+    axios
+      .post("http://localhost:3100/api/enroll", {
+        courseID: courseID,
+        userID: data.ID,
+      })
+      .then((res) => {
+        // GOTO course view
+        console.log(res);
+      });
+  };
 
   return (
     <>
@@ -32,14 +61,18 @@ export default function Browse() {
         <h1 className="font-semibold text-2xl mt-12 mb-4">
           What would you like to upskill?
         </h1>
-        <input
-          className="bg-white mb-8 px-6 rounded-xl w-[820px] h-[55px] shadow-2xl placeholder:font-thin placeholder:text-sm"
-          type="text"
-          placeholder="front end development, data visualization, blockchain"
-        />
+        <form onChange={onChangeHandler}>
+          <input
+            className="bg-white mb-8 px-6 rounded-xl w-[820px] h-[55px] shadow-2xl placeholder:font-thin placeholder:text-sm"
+            type="text"
+            placeholder="front end development, data visualization, blockchain"
+          />
+        </form>
         <div>
           <p className="p-2 font-md text-xs text-stone-400 text-right">
-            Showing 1-10 of 284
+            {`Showing ${parseInt(page - 1) * 5 + 1}-${
+              parseInt(page) * 5
+            } of ${totalCourse}`}
           </p>
           <div className="flex flex-row w-max text-stone-500">
             <div className="flex flex-col items-start w-[320px]">
@@ -56,14 +89,14 @@ export default function Browse() {
               </ul>
             </div>
 
-            <div className="flex flex-col items-end">
-              {courses.map((i) => (
-                <CourseCard {...dummyData[i]} id={i} key={i} />
-              ))}
-            </div>
+            <CourseList
+              courses={courses}
+              isLoaded={isLoaded}
+              onEnroll={onEnroll}
+            />
           </div>
         </div>
-        <PageSelector pageCount={10} currentPage={parseInt(page)} />
+        <PageSelector pageCount={totalPage} currentPage={parseInt(page)} />
       </div>
       <Footer />
     </>
@@ -75,5 +108,30 @@ const Filter = (props) => {
     <li className="mb-1">
       <Checkbox label={props.label} />
     </li>
+  );
+};
+
+const CourseList = (props) => {
+  return (
+    <div className="flex flex-col items-end">
+      {props.isLoaded && (
+        <>
+          {props.courses === null && (
+            <div className="w-[860px] h-[310px] text-black text-xl font-semibold flex items-center justify-center">
+              No courses found!
+            </div>
+          )}
+
+          {props.courses !== null &&
+            props.courses.map((i) => (
+              <CourseCard
+                {...i}
+                key={i.courseID}
+                onEnroll={props.onEnroll(i.courseID)}
+              />
+            ))}
+        </>
+      )}
+    </div>
   );
 };

@@ -14,7 +14,6 @@ export const ProfileDescription = ({ data, onEditProfile }) => {
       <SubProfile label="Email Address">{data.email}</SubProfile>
       <SubProfile label="Social Media Accounts">
         <div className="flex flex-col text-stone-500">
-          {console.log(data)}
           {data.socialFacebook !== "" && (
             <SubProfileLink href={data.socialFacebook} label="Facebook" />
           )}

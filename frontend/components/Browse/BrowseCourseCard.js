@@ -15,15 +15,15 @@ export const CourseCard = (props) => {
         />
       </div>
       <div className="p-6 w-full h-full relative">
-        <h1 className="font-bold text-xl text-stone-500 mb-2">{props.name}</h1>
+        <h1 className="font-bold text-xl text-stone-500 mb-2">{props.title}</h1>
         <div className="text-sm mb-2">
           <span className="font-bold tracking-widest text-cyan-700 mr-4">
-            {props.id}
+            {props.courseID}
           </span>
-          <span className="font-semibold">{props.instructor}</span>
+          <span className="font-semibold">{props.instructorFullName}</span>
         </div>
         <div className="text-stone-400 font-medium text-xs relative flex flex-row gap-3 mb-3">
-          {props.tags.map((e) => (
+          {props.categories.map((e) => (
             <span key={e}>{e}</span>
           ))}
         </div>

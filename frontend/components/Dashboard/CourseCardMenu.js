@@ -1,5 +1,4 @@
 import { Button } from "../Button";
-
 export const CourseCardInstructorMenu = ({
   primaryOnClick,
   secondaryOnClick,

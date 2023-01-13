@@ -1,5 +1,3 @@
-import { Button } from "../Button";
-
 export const Modal = (props) => {
   return (
     <div
