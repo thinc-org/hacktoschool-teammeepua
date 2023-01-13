@@ -1,5 +1,5 @@
 import { EditSubProfile } from "./EditSubProfile";
-import { SubProfile } from "./SubProfile";
+import { SubProfile } from "../SubProfile";
 import { EditSubProfileLink } from "./EditSubProfileLink";
 import { useForm } from "react-hook-form";
 import axios from "axios";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EditProfile } from "./EditProfile";
+import { EditProfile } from "./Edit/EditProfile";
 import { ProfileBanner } from "./ProfileBanner";
 import { SubProfile } from "./SubProfile";
 import { SubProfileLink } from "./SubProfileLink";
