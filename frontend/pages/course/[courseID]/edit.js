@@ -8,11 +8,7 @@ import TextEditor from "../../../components/TextEditor";
 
 export default function App() {
   const [courseData, setCourseData] = useState();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const router = useRouter();
   const { courseID } = router.query;
@@ -28,11 +24,17 @@ export default function App() {
   }, [router]);
 
   const checkCategory = (label) => {
-    return courseData.categories.includes(label);
+    return (
+      courseData.categories !== null && courseData.categories.includes(label)
+    );
   };
 
   const onSubmitHandler = (e) => {
     console.log(e);
+    let categores = [];
+    e.forEach((i) => {
+      console.log(i);
+    });
   };
 
   console.log(courseData);
@@ -94,6 +96,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900 ">
                 <input
                   type="checkbox"
+                  {...register("Technology")}
                   defaultChecked={checkCategory("Technology")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
@@ -104,6 +107,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900 ">
                 <input
                   type="checkbox"
+                  {...register("Computer Science")}
                   defaultChecked={checkCategory("Computer Science")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded "
                 />
@@ -114,6 +118,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900">
                 <input
                   type="checkbox"
+                  {...register("Back-end")}
                   defaultChecked={checkCategory("Back-end")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
                 />
