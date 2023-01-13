@@ -58,7 +58,7 @@ export default function UserLogin() {
             width={16}
             height={16}
           />
-          <span>{user === "student" ? "Instructor" : "Student"} Login</span>
+          <span>{user === "student" ? "Student" : "Instructor"} Login</span>
         </Link>
 
         <form
