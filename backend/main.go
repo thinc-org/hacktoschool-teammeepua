@@ -25,6 +25,7 @@ func main() {
 	router.POST("/api/userinfo", controllers.GetUserInfo)
 	router.PATCH("/api/course_content/:courseID", controllers.EditCourseContent)
 	router.GET("/api/course_content/:courseID", controllers.GetCourseContent)
+	router.GET("/api/get_student_list/:courseID", controllers.GetStudentEnrollmentsFromCourse)
 
 	router.Run(":3100")
 
