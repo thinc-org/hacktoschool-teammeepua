@@ -33,7 +33,7 @@ func EnrollCourse(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{"message": "enrollment is successfully"})
 }
 
-func GetStudentEnrollments(userID uint, listCourse *[]models.Course) {
+func GetEnrollmentsOfStudent(userID uint, listCourse *[]models.Course) {
 	var student models.Student
 	var enrollments []models.Enrollment
 	database.DB.Db.Where("user_id = ?", userID).First(&student)

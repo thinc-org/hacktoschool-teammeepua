@@ -73,7 +73,7 @@ func GetUserInfo(context *gin.Context) {
 	database.DB.Db.Where("id = ?", data.UserID).First(&user)
 	var listCourseRaw []models.Course
 	if user.Role == "student" {
-		GetStudentEnrollments(user.ID, &listCourseRaw)
+		GetEnrollmentsOfStudent(user.ID, &listCourseRaw)
 	} else if user.Role == "instructor" {
 		GetInstructorCourses(user.ID, &listCourseRaw)
 	}
