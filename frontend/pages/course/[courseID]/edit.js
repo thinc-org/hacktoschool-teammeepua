@@ -30,11 +30,27 @@ export default function App() {
   };
 
   const onSubmitHandler = (e) => {
-    console.log(e);
-    let categores = [];
-    e.forEach((i) => {
-      console.log(i);
-    });
+    let categories = [];
+    for (let i in e.categories) {
+      if (e.categories[i] === true) categories.push(i);
+    }
+
+    let message = {
+      ...e,
+      categories: categories,
+      courseID: courseData.courseID,
+      content: "",
+    };
+
+    axios
+      .patch(
+        `http://localhost:3100/api/course_content/${courseData.courseID}`,
+        message
+      )
+      .then((res) => {
+        router.push("/dashboard");
+        console.log(res);
+      });
   };
 
   console.log(courseData);
@@ -96,7 +112,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900 ">
                 <input
                   type="checkbox"
-                  {...register("Technology")}
+                  {...register("categories.Technology")}
                   defaultChecked={checkCategory("Technology")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
@@ -107,7 +123,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900 ">
                 <input
                   type="checkbox"
-                  {...register("Computer Science")}
+                  {...register("categories.Computer Science")}
                   defaultChecked={checkCategory("Computer Science")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded "
                 />
@@ -118,7 +134,7 @@ export default function App() {
               <label className="ml-2 text-sm font-medium text-gray-900">
                 <input
                   type="checkbox"
-                  {...register("Back-end")}
+                  {...register("categories.Back-end")}
                   defaultChecked={checkCategory("Back-end")}
                   className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
                 />
