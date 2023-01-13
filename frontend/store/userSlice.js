@@ -29,6 +29,9 @@ const initialState = {
     lastName: "lastName",
     displayName: "displayName",
     role: "role",
+    socialFacebook: "",
+    socialYoutube: "",
+
     isLoggedIn: false,
   },
 };
