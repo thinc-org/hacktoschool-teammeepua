@@ -1,7 +1,4 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Button } from "../Button";
-import { RightArrow } from "../SVGIcon/RightArrow";
 import { CourseCardMenu } from "./CourseCardMenu";
 
 export const CourseCard = (props) => {
