@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useRouter } from "next/router";
 
 const createSession = (data) => {
   let expired = new Date();
@@ -23,14 +22,15 @@ const clearSession = () => {
 
 const initialState = {
   data: {
-    ID: 0,
-    email: "email",
-    firstName: "firstName",
-    lastName: "lastName",
-    displayName: "displayName",
-    role: "role",
-    socialFacebook: "",
-    socialYoutube: "",
+    ID: "string",
+    firstName: "string",
+    lastName: "string",
+    displayName: "string",
+    email: "string",
+    socialFacebook: "string",
+    socialYoutube: "string",
+    socialZoom: "string",
+    courseList: [],
 
     isLoggedIn: false,
   },

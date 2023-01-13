@@ -1,7 +1,15 @@
 import Image from "next/image";
-import { CourseCardMenu } from "./CourseCardMenu";
+import { useSelector } from "react-redux";
+import {
+  CourseCardInstructorMenu,
+  CourseCardStudentMenu,
+} from "./CourseCardMenu";
 
 export const CourseCard = (props) => {
+  const { data } = useSelector((state) => state.user);
+
+  console.log(data);
+
   return (
     <div className="w-[682px] h-[310px] bg-white rounded-xl shadow-lg mb-5 overflow-hidden flex flex-row hover:scale-[1.01] transition">
       <div className="relative w-[170px] h-[310px] flex-none">
@@ -30,7 +38,12 @@ export const CourseCard = (props) => {
           {props.description}
         </div>
 
-        <CourseCardMenu />
+        {data.role === "student" && <CourseCardStudentMenu />}
+        {data.role === "instructor" && (
+          <CourseCardInstructorMenu
+            secondaryOnClick={() => props.onShowCourseStudent()}
+          />
+        )}
       </div>
     </div>
   );

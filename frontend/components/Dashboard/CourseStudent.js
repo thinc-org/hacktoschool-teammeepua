@@ -126,7 +126,7 @@ export const CourseStudent = (props) => {
         </div>
 
         {/* fixed button */}
-        <Button name="Close" />
+        <Button onClick={props.onCloseCourseStudent}>Close</Button>
       </div>
     </div>
   );

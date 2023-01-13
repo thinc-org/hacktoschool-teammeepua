@@ -1,4 +1,3 @@
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import { SubProfile } from "./SubProfile";
 import { SubProfileLink } from "./SubProfileLink";
 
@@ -7,7 +6,11 @@ export const ProfileDescription = ({ data, onEditProfile }) => {
     <div className="flex flex-col justify-start gap-4">
       <SubProfile label="Display Name">{data.displayName}</SubProfile>
       <SubProfile label="Full Name">{`${data.firstName} ${data.lastName}`}</SubProfile>
-      <SubProfile label="Student ID">{data.ID}</SubProfile>
+      <SubProfile
+        label={`${data.role === "student" ? "Student" : "Instructor"} ID`}
+      >
+        {data.ID}
+      </SubProfile>
       <SubProfile label="Email Address">{data.email}</SubProfile>
       <SubProfile label="Social Media Accounts">
         <div className="flex flex-col text-stone-500">
