@@ -1,4 +1,4 @@
-import { Button } from "../Button";
+import { Button } from "../../Button";
 
 export const EditCourse = () => {
   return (
@@ -14,7 +14,10 @@ export const EditCourse = () => {
       </h1>
       <form>
         <div class="mb-6">
-          <label for="course-name" class="block mb-2 text-sm font-medium ">
+          <label
+            for="course-name"
+            class="block mb-2 text-sm font-medium text-stone-500"
+          >
             Course Name
           </label>
           <input
@@ -24,13 +27,13 @@ export const EditCourse = () => {
             required
           />
         </div>
-        <p>Instructor name</p>
+        <p className="text-stone-500">Instructor name</p>
         <div className="h-px w-full bg-stone-300 my-5"></div>
 
         <div class="mb-6">
           <label
             for="course-description"
-            class="block mb-2 text-sm font-medium "
+            class="block mb-2 text-sm font-medium text-stone-500"
           >
             Course Description
           </label>
@@ -42,7 +45,7 @@ export const EditCourse = () => {
           ></textarea>
         </div>
 
-        <p className="my-3">Course Categories</p>
+        <p className="my-3 text-stone-500">Course Categories</p>
         <div className="flex items-center justify-between mb-4 w-1/2">
           <div className="flex items-center">
             <input
@@ -88,12 +91,31 @@ export const EditCourse = () => {
           </div>
         </div>
 
+        <div class="my-6">
+          <label
+            for="course-photo-link"
+            class="block mb-2 text-sm font-medium text-stone-500"
+          >
+            Course Photo Link
+          </label>
+          <input
+            id="course-photo-link"
+            class="border border-stone-300 text-sm rounded-lg block w-full p-2.5"
+            placeholder="Ex. https://yourcourseimage.com/..."
+            required
+          />
+        </div>
+
         {/* text editor here */}
 
         <div className="my-12">
-          <Button name="Save Changes" />
-          <button className="text-stone-500 underline rounded-full px-5 py-2 text-lg hover:bg-stone-200 mx-6">Cancel</button>
-          <button className="text-red-500 underline rounded-full px-5 py-2 text-lg hover:bg-red-200">Delete</button>
+          <Button>Save Changes</Button>
+          <button className="text-stone-500 underline rounded-full px-5 py-2 text-lg hover:bg-stone-200 mx-6">
+            Cancel
+          </button>
+          <button className="text-red-500 underline rounded-full px-5 py-2 text-lg hover:bg-red-200">
+            Delete
+          </button>
         </div>
       </form>
     </div>
