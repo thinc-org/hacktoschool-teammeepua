@@ -88,6 +88,7 @@ export default function () {
               >
                 Create New Course +
               </button>
+              <h2 className="mt-4 text-orange-400">Please refresh to see changes</h2>
             </div>
           )}
 
