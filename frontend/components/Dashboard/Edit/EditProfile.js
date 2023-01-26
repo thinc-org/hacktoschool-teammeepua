@@ -61,7 +61,7 @@ export const EditProfile = ({ data, onSaveProfile }) => {
         <EditSubProfileLink
           header="Facebook"
           type="text"
-          name="socialFacbook"
+          name="socialFacebook"
           placeholder={data.socialFacebook}
           register={register}
           error={errors}
